@@ -2,7 +2,7 @@
 #define __SCENE_H__
 
 #include "Module.h"
-#include "Player.h"
+#include "Cannon.h"
 #include "Item.h"
 
 struct SDL_Texture;
@@ -39,7 +39,7 @@ private:
 	float textPosX, textPosY = 0;
 	uint texW, texH;
 	uint windowW, windowH;
-	Player* player;
+	Cannon* player;
 
 };
 

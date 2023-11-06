@@ -7,7 +7,7 @@
 #include "Defs.h"
 #include "Log.h"
 #include "Render.h"
-#include "Player.h"
+#include "Cannon.h"
 #include "Window.h"
 #include "Box2D/Box2D/Box2D.h"
 
@@ -22,7 +22,6 @@ Physics::Physics() : Module()
 {
 	// Initialise all the internal class variables, at least to NULL pointer
 	world = NULL;
-	debug = true;
 }
 
 // Destructor
@@ -65,7 +64,7 @@ bool Physics::PreUpdate()
 			PhysBody* pb2 = (PhysBody*)c->GetFixtureB()->GetBody()->GetUserData();
 			
 			if (pb1 && pb2 && pb1->listener)
-				pb1->listener->OnCollision(pb1, pb2);
+				pb1->listener->OnCollision(pb1, pb2, c);
 		}
 	}
 
@@ -133,8 +132,8 @@ PhysBody* Physics::CreateCircle(int x, int y, int radious, bodyType type)
 	PhysBody* pbody = new PhysBody();
 	pbody->body = b;
 	b->SetUserData(pbody);
-	pbody->width = radious * 0.5f;
-	pbody->height = radious * 0.5f;
+	pbody->width = radious;
+	pbody->height = radious;
 
 	// Return our PhysBody class
 	return pbody;
@@ -218,6 +217,22 @@ PhysBody* Physics::CreateChain(int x, int y, int* points, int size, bodyType typ
 	return pbody;
 }
 
+// Destroys the body the pointer points to, along with Userdata in the form of PhysBody*
+void Physics::DestroyBody(b2Body* body)
+{
+	PhysBody* pBody = reinterpret_cast<PhysBody*>(body->GetUserData());
+	if (pBody != nullptr) {
+		pBody->body = nullptr;
+		if (pBody->boundEntity != nullptr)
+		{
+			pBody->boundEntity->setToDestroy = true;
+			pBody->boundEntity = nullptr;
+		}
+		delete pBody;
+	}
+	world->DestroyBody(body);
+}
+
 // 
 bool Physics::PostUpdate()
 {
@@ -225,10 +240,10 @@ bool Physics::PostUpdate()
 
 	// Activate or deactivate debug mode
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
-		debug = !debug;
+		app->debug = !app->debug;
 	
 	//  Iterate all objects in the world and draw the bodies
-	if (debug)
+	if (app->debug)
 	{
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 		{
@@ -327,10 +342,10 @@ void Physics::BeginContact(b2Contact* contact)
 	PhysBody* physB = (PhysBody*)contact->GetFixtureB()->GetBody()->GetUserData();
 
 	if (physA && physA->listener != NULL)
-		physA->listener->OnCollision(physA, physB);
+		physA->listener->OnCollision(physA, physB, contact);
 
 	if (physB && physB->listener != NULL)
-		physB->listener->OnCollision(physB, physA);
+		physB->listener->OnCollision(physB, physA, contact);
 }
 
 //--------------- PhysBody

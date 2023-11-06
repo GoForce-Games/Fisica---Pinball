@@ -7,10 +7,12 @@
 #include "Render.h"
 
 class PhysBody;
+class b2Contact;
 
 enum class EntityType
 {
-	PLAYER,
+	CANNON,
+	BALL,
 	ITEM,
 	UNKNOWN
 };
@@ -69,7 +71,7 @@ public:
 		}
 	}
 
-	virtual void OnCollision(PhysBody* physA, PhysBody* physB) {
+	virtual void OnCollision(PhysBody* physA, PhysBody* physB, b2Contact* contactInfo) {
 
 	};
 
@@ -84,6 +86,8 @@ public:
 	// want our Entity class, maybe it's not renderable...
 	iPoint position;       
 	bool renderable = true;
+
+	bool setToDestroy = false;
 };
 
 #endif // __ENTITY_H__

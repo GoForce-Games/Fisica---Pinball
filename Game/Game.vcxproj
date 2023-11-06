@@ -95,7 +95,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PinballPieces.cpp" />
+    <ClCompile Include="Source\CollideableEntity.cpp" />
+    <ClCompile Include="Source\Ball.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\Item.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -105,20 +106,24 @@
     <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\PerfTimer.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
-    <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\Cannon.cpp" />
+    <ClCompile Include="Source\PinballPieces.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
-    <ClInclude Include="PinballPieces.h" />
+    <ClInclude Include="Source\CollideableEntity.h" />
+    <ClInclude Include="Source\Ball.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
     <ClInclude Include="Source\Item.h" />
     <ClInclude Include="Source\Map.h" />
     <ClInclude Include="Source\PerfTimer.h" />
     <ClInclude Include="Source\Physics.h" />
-    <ClInclude Include="Source\Player.h" />
+    <ClInclude Include="Source\Cannon.h" />
+    <ClInclude Include="Source\PinballPieces.h" />
+    <ClInclude Include="Source\PropertiesStruct.h" />
     <ClInclude Include="Source\Queue.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Audio.h" />

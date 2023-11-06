@@ -1,5 +1,6 @@
 #include "EntityManager.h"
-#include "Player.h"
+#include "Cannon.h"
+
 #include "App.h"
 #include "Textures.h"
 #include "Scene.h"
@@ -10,6 +11,7 @@
 EntityManager::EntityManager() : Module()
 {
 	name.Create("entitymanager");
+	needsAwaking = true;
 }
 
 // Destructor
@@ -67,10 +69,12 @@ bool EntityManager::CleanUp()
 	while (item != NULL && ret == true)
 	{
 		ret = item->data->CleanUp();
+		DestroyEntity(item->data);
 		item = item->prev;
 	}
 
 	entities.Clear();
+	players.Clear();
 
 	return ret;
 }
@@ -81,8 +85,9 @@ Entity* EntityManager::CreateEntity(EntityType type)
 
 	switch (type)
 	{
-	case EntityType::PLAYER:
-		entity = new Player();
+	case EntityType::CANNON:
+		entity = new Cannon();
+		players.Add(static_cast<Cannon*>(entity));
 		break;
 	case EntityType::ITEM:
 		entity = new Item();
@@ -102,7 +107,10 @@ void EntityManager::DestroyEntity(Entity* entity)
 
 	for (item = entities.start; item != NULL; item = item->next)
 	{
-		if (item->data == entity) entities.Del(item);
+		if (item->data == entity) 
+		{
+			entities.Del(item);
+		}
 	}
 }
 
@@ -120,7 +128,7 @@ bool EntityManager::Update(float dt)
 	for (item = entities.start; item != NULL && ret == true; item = item->next)
 	{
 		pEntity = item->data;
-
+		if (pEntity->setToDestroy) DestroyEntity(pEntity);
 		if (pEntity->active == false) continue;
 		ret = item->data->Update(dt);
 	}

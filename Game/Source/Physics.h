@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
-#include "Entity.h"
+#include "CollideableEntity.h"
+#include "PropertiesStruct.h"
 
 #include "Box2D/Box2D/Box2D.h"
 
@@ -24,7 +25,7 @@ enum bodyType {
 };
 
 enum class ColliderType {
-	PLAYER, 
+	CANNON, 
 	ITEM,
 	PLATFORM, 
 	UNKNOWN
@@ -50,6 +51,12 @@ public:
 	b2Body* body;
 	Entity* listener;
 	ColliderType ctype;
+
+	CollideableEntity* boundEntity = nullptr;
+
+	Properties properties;
+
+	bool setToDestroy = false;
 };
 
 // Module --------------------------------------
@@ -72,14 +79,14 @@ public:
 	PhysBody* CreateCircle(int x, int y, int radious, bodyType type);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, bodyType type);
 	PhysBody* CreateChain(int x, int y, int* points, int size, bodyType type);
+
+	void DestroyBody(b2Body* body);
 	
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 
 private:
 
-	// Debug mode
-	bool debug;
 
 	// Box2D World
 	b2World* world;

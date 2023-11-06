@@ -5,6 +5,9 @@
 #include "Entity.h"
 #include "List.h"
 
+class Cannon;
+class Camera;
+
 class EntityManager : public Module
 {
 public:
@@ -36,6 +39,8 @@ public:
 public:
 
 	List<Entity*> entities;
+
+	List<Cannon*> players;
 
 };
 

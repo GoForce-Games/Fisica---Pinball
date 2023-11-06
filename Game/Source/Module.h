@@ -60,6 +60,8 @@ public:
 	SString name;
 	bool active;
 
+	bool needsAwaking = false;
+
 };
 
 #endif // __MODULE_H__

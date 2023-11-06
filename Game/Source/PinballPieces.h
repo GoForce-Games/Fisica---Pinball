@@ -3,7 +3,7 @@
 #include "List.h"
 #include "Point.h"
 
-
+struct SDL_Texture;
 
 class PinballPieces : public Module
 {
@@ -34,7 +34,7 @@ private:
 	SDL_Texture* trianguloI;
 	SDL_Texture* cuadrado_webon;
 	SDL_Texture* recta;
-	SDL_Texture* trianguloD;
+	//SDL_Texture* trianguloD; // redefinido
 	SDL_Texture* estrella;
 	SDL_Texture* u_feliz;
 	SDL_Texture* x2;
