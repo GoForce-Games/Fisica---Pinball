@@ -1,8 +1,8 @@
-# {Project Name}
+# {GoForceGames - Pinball}
 
 ## Description
 
-{project description}
+An SDL and Box2D pinball game.
 
 ## Key Features
 
@@ -17,10 +17,10 @@
 
 ## Developers
 
- - {Dev01} - {Role(s)}
- - {Dev02} - {Role(s)}
- - {Dev03} - {Role(s)}
- - {Dev04} - {Role(s)}
+ - Edgar Mesa Domínguez
+ - Pau Mena Torres
+ - Roger Puchol Celma
+ - Èric Palomares Rodriguez
 
 ## License
 
