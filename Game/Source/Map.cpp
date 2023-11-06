@@ -1,4 +1,3 @@
-
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
@@ -30,20 +29,17 @@ bool Map::Awake(pugi::xml_node& config)
 
 bool Map::Start() {
 
-   
+    mapTexture = app->tex->Load("Assets/Textures/RbCT6y.png");
 
     return true;
 }
 
 bool Map::Update(float dt)
 {
+    app->render->DrawTexture(mapTexture, 0, 0, NULL);
     
     return true;
 }
-
-
-
-
 
 // Called before quitting
 bool Map::CleanUp()
@@ -53,9 +49,3 @@ bool Map::CleanUp()
 	
     return true;
 }
-
-
-
-
-
-

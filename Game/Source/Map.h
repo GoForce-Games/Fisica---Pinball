@@ -38,7 +38,8 @@ private:
 
 	
 
-
+public:
+	SDL_Texture* mapTexture;
 };
 
 #endif // __MAP_H__
