@@ -58,7 +58,8 @@
     <ClCompile Include="Source\CollideableEntity.cpp">
       <Filter>Entities\Collideable</Filter>
     </ClCompile>
-    <ClInclude Include="PinballPieces.h" />
+    <ClCompile Include="Source\PinballPieces.cpp" />
+    <ClCompile Include="IntroScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -146,6 +147,8 @@
       <Filter>Modules\Structs</Filter>
     </ClInclude>
     <ClInclude Include="PinballPieces.h" />
+    <ClInclude Include="Source\PinballPieces.h" />
+    <ClInclude Include="IntroScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
