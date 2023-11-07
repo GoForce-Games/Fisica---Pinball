@@ -1,6 +1,5 @@
 #pragma once
 #include "Module.h"
-#include "CollideableEntity.h"
 #include "PropertiesStruct.h"
 
 #include "Box2D/Box2D/Box2D.h"
@@ -16,6 +15,8 @@
 
 #define DEGTORAD 0.0174532925199432957f
 #define RADTODEG 57.295779513082320876f
+
+class Entity;
 
 // types of bodies
 enum bodyType {
@@ -52,7 +53,7 @@ public:
 	Entity* listener;
 	ColliderType ctype;
 
-	CollideableEntity* boundEntity = nullptr;
+	Entity* boundEntity = nullptr;
 
 	Properties properties;
 

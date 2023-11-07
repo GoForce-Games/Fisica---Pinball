@@ -5,9 +5,14 @@
 #include "Input.h"
 #include "Render.h"
 #include "Scene.h"
+#include "Physics.h"
+
+#include "Ball.h"
+
 #include "Log.h"
 #include "Point.h"
-#include "Physics.h"
+
+#include "Box2D/Box2D/Box2D.h"
 
 Cannon::Cannon() : Entity(EntityType::CANNON)
 {
@@ -25,7 +30,6 @@ bool Cannon::Awake() {
 	launchAngle = parameters.attribute("launchAngle").as_float();
 	launchPowerIncrease = parameters.attribute("launchPowerIncrease").as_float();
 	texturePath = parameters.attribute("texturepath").as_string();
-	launched = false;
 
 	return true;
 }
@@ -35,7 +39,6 @@ bool Cannon::Start() {
 	//initilize textures
 	texture = app->tex->Load(texturePath);
 
-	LoadBall();
 
 	return true;
 }
@@ -48,6 +51,11 @@ bool Cannon::Update(float dt)
 		}
 		else if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
 			LaunchBall();
+		}
+	}
+	else {
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
+			LoadBall();
 		}
 	}
 
@@ -68,12 +76,19 @@ void Cannon::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 void Cannon::LoadBall()
 {
-
+	if (canLaunch && ball == nullptr) {
+		ball = (Ball*) app->entityManager->CreateEntity(EntityType::BALL);
+		ball->position.x = position.x;
+		ball->position.y = position.y;
+		ball->Awake();
+	}
 }
 
 void Cannon::LaunchBall()
 {
-
-
+	ball->SetPosition(position);
+	ball->pbody->body->SetLinearVelocity({ 0.0f,launchPower });
+	ball = nullptr;
+	canLaunch = false;
 	launchPower = 0.0f;
 }

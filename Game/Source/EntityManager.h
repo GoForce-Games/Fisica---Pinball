@@ -2,11 +2,13 @@
 #define __ENTITYMANAGER_H__
 
 #include "Module.h"
+
 #include "Entity.h"
+
 #include "List.h"
 
+
 class Cannon;
-class Camera;
 
 class EntityManager : public Module
 {
@@ -34,13 +36,15 @@ public:
 
 	void DestroyEntity(Entity* entity);
 
+	void RemoveEntity(Entity* entity);
+
 	void AddEntity(Entity* entity);
 
 public:
 
 	List<Entity*> entities;
 
-	List<Cannon*> players;
+	pugi::xml_node entityPresets;
 
 };
 

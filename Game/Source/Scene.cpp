@@ -39,10 +39,7 @@ bool Scene::Awake(pugi::xml_node& config)
 		item->parameters = itemNode;
 	}
 
-	if (config.child("cannon")) {
-		player = (Cannon*)app->entityManager->CreateEntity(EntityType::CANNON);
-		player->parameters = config.child(player->name.GetString());
-	}
+	player = (Cannon*)app->entityManager->CreateEntity(EntityType::CANNON);
 
 
 	return ret;

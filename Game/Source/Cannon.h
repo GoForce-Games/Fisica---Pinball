@@ -37,7 +37,7 @@ public:
 	PhysBody* pbody;
 
 	Ball* ball;
-	bool launched;
+	bool canLaunch = true;
 
 	float launchAngle = 0.0f;
 	float launchPower = 0.0f;

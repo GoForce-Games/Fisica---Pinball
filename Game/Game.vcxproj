@@ -95,7 +95,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\CollideableEntity.cpp" />
     <ClCompile Include="Source\Ball.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\IntroScreen.cpp" />
@@ -114,7 +113,6 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
-    <ClInclude Include="Source\CollideableEntity.h" />
     <ClInclude Include="Source\Ball.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />

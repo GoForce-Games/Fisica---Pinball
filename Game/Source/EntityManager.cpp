@@ -1,9 +1,11 @@
 #include "EntityManager.h"
-#include "Cannon.h"
 
 #include "App.h"
 #include "Textures.h"
 #include "Scene.h"
+
+#include "Cannon.h"
+#include "Ball.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -21,6 +23,7 @@ EntityManager::~EntityManager()
 // Called before render is available
 bool EntityManager::Awake(pugi::xml_node& config)
 {
+	Module::Awake(config);
 	LOG("Loading Entity Manager");
 	bool ret = true;
 
@@ -36,12 +39,14 @@ bool EntityManager::Awake(pugi::xml_node& config)
 		ret = item->data->Awake();
 	}
 
+	entityPresets = config.child("entitypresets");
+
 	return ret;
 
 }
 
 bool EntityManager::Start() {
-
+	Module::Start();
 	bool ret = true; 
 
 	//Iterates over the entities and calls Start
@@ -69,12 +74,12 @@ bool EntityManager::CleanUp()
 	while (item != NULL && ret == true)
 	{
 		ret = item->data->CleanUp();
-		DestroyEntity(item->data);
+		delete item->data;
+		entities.Del(item);
 		item = item->prev;
 	}
 
 	entities.Clear();
-	players.Clear();
 
 	return ret;
 }
@@ -85,23 +90,35 @@ Entity* EntityManager::CreateEntity(EntityType type)
 
 	switch (type)
 	{
-	case EntityType::CANNON:
-		entity = new Cannon();
-		players.Add(static_cast<Cannon*>(entity));
-		break;
-	case EntityType::ITEM:
-		entity = new Item();
-		break;
+	case EntityType::CANNON:	entity = new Cannon(); break;
+	case EntityType::ITEM:		entity = new Item(); break;
+	case EntityType::BALL:		entity = new Ball(); break;
 	default:
 		break;
 	}
+
+	if (entity != nullptr) {
+		entity->parameters = entityPresets.child(entity->name.GetString());
+	}
+	// Si ya ha pasado la fase de inicializacion (Awake() y Start()), ejecuta manualmente la función correspondiente para esta entidad
+	if (awoken) entity->Awake();
+	if (started) entity->Start();
 
 	entities.Add(entity);
 
 	return entity;
 }
 
+// Removes the entity from the list and destroys it. Make sure not to have any pointers to it after running this
 void EntityManager::DestroyEntity(Entity* entity)
+{
+	RemoveEntity(entity);
+	entity->CleanUp();
+	delete entity;
+}
+
+// Removes the entity from the list
+void EntityManager::RemoveEntity(Entity* entity)
 {
 	ListItem<Entity*>* item;
 
@@ -109,6 +126,7 @@ void EntityManager::DestroyEntity(Entity* entity)
 	{
 		if (item->data == entity) 
 		{
+			delete item->data;
 			entities.Del(item);
 		}
 	}
@@ -128,7 +146,7 @@ bool EntityManager::Update(float dt)
 	for (item = entities.start; item != NULL && ret == true; item = item->next)
 	{
 		pEntity = item->data;
-		if (pEntity->setToDestroy) DestroyEntity(pEntity);
+		if (pEntity->setToDestroy) { DestroyEntity(pEntity); continue; }
 		if (pEntity->active == false) continue;
 		ret = item->data->Update(dt);
 	}

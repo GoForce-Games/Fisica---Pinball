@@ -75,6 +75,10 @@ public:
 
 	};
 
+	virtual void SetPosition(const iPoint& newPos) {
+		position.Create(newPos.x, newPos.y);
+	}
+
 public:
 
 	SString name;
@@ -86,6 +90,8 @@ public:
 	// want our Entity class, maybe it's not renderable...
 	iPoint position;       
 	bool renderable = true;
+
+	PhysBody* pbody = nullptr;
 
 	bool setToDestroy = false;
 };

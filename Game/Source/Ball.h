@@ -1,9 +1,11 @@
 #pragma once
-#include "CollideableEntity.h"
+#include "Entity.h"
 
 class Ball :
-    public CollideableEntity
+    public Entity
 {
+public:
+
     Ball();
 
     ~Ball();
@@ -17,6 +19,8 @@ class Ball :
 	bool CleanUp();
 
 	void OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* contactInfo) override;
+
+	void SetPosition(const iPoint& newPos) override;
 
 };
 
