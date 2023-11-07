@@ -109,6 +109,7 @@
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Cannon.cpp" />
     <ClCompile Include="Source\PinballPieces.cpp" />
+    <ClCompile Include="Source\PresentationScreen.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
@@ -125,6 +126,7 @@
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\Cannon.h" />
     <ClInclude Include="Source\PinballPieces.h" />
+    <ClInclude Include="Source\PresentationScreen.h" />
     <ClInclude Include="Source\PropertiesStruct.h" />
     <ClInclude Include="Source\Queue.h" />
     <ClInclude Include="Source\Scene.h" />
