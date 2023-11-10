@@ -6,6 +6,7 @@
 #include "Audio.h"
 #include "Scene.h"
 #include "Map.h"
+#include "Puntuation.h"
 #include "Physics.h"
 
 #include "Defs.h"
@@ -32,6 +33,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics();
 	scene = new Scene();
 	map = new Map();
+	puntuation = new Puntuation();
 	entityManager = new EntityManager();
 
 
@@ -45,6 +47,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(entityManager);
 	AddModule(scene);
 	AddModule(map);
+	AddModule(puntuation);
 
 	// Render last to swap buffer
 	AddModule(render);

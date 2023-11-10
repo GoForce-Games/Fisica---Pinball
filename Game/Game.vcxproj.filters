@@ -55,11 +55,9 @@
     <ClCompile Include="Source\Ball.cpp">
       <Filter>Entities\Collideable</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CollideableEntity.cpp">
-      <Filter>Entities\Collideable</Filter>
-    </ClCompile>
     <ClCompile Include="Source\PinballPieces.cpp" />
     <ClCompile Include="Source\IntroScreen.cpp" />
+    <ClCompile Include="Source\Puntuation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -140,14 +138,12 @@
     <ClInclude Include="Source\Ball.h">
       <Filter>Entities\Collideable</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CollideableEntity.h">
-      <Filter>Entities\Collideable</Filter>
-    </ClInclude>
     <ClInclude Include="Source\PropertiesStruct.h">
       <Filter>Modules\Structs</Filter>
     </ClInclude>
     <ClInclude Include="Source\PinballPieces.h" />
     <ClInclude Include="Source\IntroScreen.h" />
+    <ClInclude Include="Source\Puntuation.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

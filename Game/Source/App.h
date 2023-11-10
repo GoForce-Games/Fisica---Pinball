@@ -18,6 +18,7 @@ class Audio;
 class Scene;
 class EntityManager;
 class Map;
+class Puntuation;
 class Physics;
 
 class App
@@ -82,6 +83,7 @@ public:
 	Scene* scene;
 	EntityManager* entityManager;
 	Map* map;
+	Puntuation* puntuation;
 	Physics* physics;
 
 	bool debug;
