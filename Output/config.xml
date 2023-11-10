@@ -32,8 +32,8 @@
 
 	<entitymanager>
 		<entitypresets>
-			<cannon x="300" y="352" texturepath="Assets/Textures/player1.png" launchAngle="90.0f" launchPowerIncrease="0.1f"/>
-			<ball radius="16"/>
+			<cannon x="316" y="576" texturepath="Assets/Textures/player1.png" launchAngle="90.0f" launchPowerIncrease="0.01f"/>
+			<ball radius="4"/>
 		</entitypresets>
 	</entitymanager>
   

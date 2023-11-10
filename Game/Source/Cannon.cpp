@@ -54,12 +54,15 @@ bool Cannon::Update(float dt)
 		}
 	}
 	else {
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
+		if (canLaunch && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
 			LoadBall();
 		}
 	}
 
 	app->render->DrawTexture(texture, position.x, position.y);
+
+	//if (app->debug)
+	//	app->render->DrawCircle(position.x, position.y, 160, 255, 0, 0);
 
 	return true;
 }
@@ -87,7 +90,7 @@ void Cannon::LoadBall()
 void Cannon::LaunchBall()
 {
 	ball->SetPosition(position);
-	ball->pbody->body->SetLinearVelocity({ 0.0f,launchPower });
+	ball->pbody->body->SetLinearVelocity({ 0.0f,-launchPower });
 	ball = nullptr;
 	canLaunch = false;
 	launchPower = 0.0f;

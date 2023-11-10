@@ -20,6 +20,7 @@ bool Ball::Awake()
 
 	pbody = app->physics->CreateCircle(position.x,position.y, radius, bodyType::DYNAMIC);
 	pbody->boundEntity = this;
+	pbody->body->SetBullet(true);
 
 	return true;
 }
