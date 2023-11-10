@@ -52,6 +52,47 @@ bool Physics::PreUpdate()
 	// WARNING: WE ARE STEPPING BY CONSTANT 1/60 SECONDS!
 	world->Step(1.0f / 60.0f, 6, 2);
 
+	int x1 = 350 / 2.9;
+	int y1 = 640 / 4.3f;
+	int diameter1 = 117 / 2;
+	b2BodyDef body1;
+	body1.type = b2_staticBody;
+	body1.position.Set(PIXEL_TO_METERS(x1), PIXEL_TO_METERS(y1));
+	b2Body* b1 = world->CreateBody(&body1);
+	b2CircleShape shape1;
+	shape1.m_radius = PIXEL_TO_METERS(diameter1) * 0.5f;
+	b2FixtureDef fixture1;
+	fixture1.shape = &shape1;
+	b1->CreateFixture(&fixture1);
+
+
+	int x2 = 350 / 1.46;
+	int y2 = 640 / 3.67f;
+	int diameter2 = 117 / 2;
+	b2BodyDef body2;
+	body2.type = b2_staticBody;
+	body2.position.Set(PIXEL_TO_METERS(x2), PIXEL_TO_METERS(y2));
+	b2Body* b2 = world->CreateBody(&body2);
+	b2CircleShape shape2;
+	shape2.m_radius = PIXEL_TO_METERS(diameter2) * 0.5f;
+	b2FixtureDef fixture2;
+	fixture2.shape = &shape2;
+	b2->CreateFixture(&fixture2);
+
+
+	int x3 = 350 / 2.7;
+	int y3 = 640 / 2.48f;
+	int diameter3 = 117 / 2;
+	b2BodyDef body3;
+	body3.type = b2_staticBody;
+	body3.position.Set(PIXEL_TO_METERS(x3), PIXEL_TO_METERS(y3));
+	b2Body* b3 = world->CreateBody(&body3);
+	b2CircleShape shape3;
+	shape3.m_radius = PIXEL_TO_METERS(diameter3) * 0.5f;
+	b2FixtureDef fixture3;
+	fixture3.shape = &shape3;
+	b3->CreateFixture(&fixture3);
+
 	// Because Box2D does not automatically broadcast collisions/contacts with sensors, 
 	// we have to manually search for collisions and "call" the equivalent to the ModulePhysics::BeginContact() ourselves...
 	for (b2Contact* c = world->GetContactList(); c; c = c->GetNext())
