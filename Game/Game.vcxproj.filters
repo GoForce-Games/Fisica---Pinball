@@ -55,10 +55,16 @@
     <ClCompile Include="Source\Ball.cpp">
       <Filter>Entities\Collideable</Filter>
     </ClCompile>
+    <ClCompile Include="Source\IntroScreen.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleFonts.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
     <ClCompile Include="Source\PinballPieces.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\IntroScreen.cpp">
+    <ClCompile Include="Source\Puntuation.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
@@ -141,14 +147,20 @@
     <ClInclude Include="Source\Ball.h">
       <Filter>Entities\Collideable</Filter>
     </ClInclude>
-    <ClInclude Include="Source\PropertiesStruct.h">
-      <Filter>Structs</Filter>
+    <ClInclude Include="Source\IntroScreen.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleFonts.h">
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="Source\PinballPieces.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Source\IntroScreen.h">
+    <ClInclude Include="Source\Puntuation.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PropertiesStruct.h">
+      <Filter>Structs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
