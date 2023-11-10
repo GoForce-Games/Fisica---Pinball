@@ -19,6 +19,7 @@ class Scene;
 class EntityManager;
 class Map;
 class Puntuation;
+class ModuleFonts;
 class Physics;
 
 class App
@@ -84,6 +85,7 @@ public:
 	EntityManager* entityManager;
 	Map* map;
 	Puntuation* puntuation;
+	ModuleFonts* fonts;
 	Physics* physics;
 
 	bool debug;
