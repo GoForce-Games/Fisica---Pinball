@@ -109,8 +109,13 @@ private:
 	bool LoadAllLayers(pugi::xml_node mapNode);
 	TileSet* GetTilesetFromTileId(int gid) const;
 	bool LoadProperties(pugi::xml_node& node, Properties& properties);
-	bool Map::LoadAllObjects(pugi::xml_node mapNode);
-	bool Map::LoadAllPolygons(pugi::xml_node mapNode);
+	bool LoadAllObjects(pugi::xml_node mapNode);
+	bool LoadAllPolygons(pugi::xml_node mapNode);
+
+
+	bool LoadRectangle(pugi::xml_node objGroupNode, pugi::xml_node objectNode);
+	bool LoadCircle(pugi::xml_node objGroupNode, pugi::xml_node objectNode);
+	bool LoadPolygon(pugi::xml_node objGroupNode, pugi::xml_node objectNode);
 
 public: 
 

@@ -354,19 +354,15 @@ bool Map::LoadAllObjects(pugi::xml_node mapNode) {
 
         for (pugi::xml_node objNode = objGroupNode.child("object"); objNode && ret; objNode = objNode.next_sibling("object"))
         {
-            // TODO carga de pol�gonos custom (CreateChain)
-            // TODO sacar la carga de objetos individuales a una funci�n a parte
 
-            int id = objNode.attribute("id").as_int();
-            float x = objNode.attribute("x").as_float();
-            float y = objNode.attribute("y").as_float();
-            float width = objNode.attribute("width").as_float();
-            float height = objNode.attribute("height").as_float();
-
-            PhysBody* object = app->physics->CreateRectangle(x + width / 2, y + height / 2, width, height, STATIC);
-            object->ctype = ColliderType::PLATFORM;
-            if (!LoadProperties(objGroupNode, object->properties)) {
-                LOG("Couldn't load properties for objectgroup %s (id %i)", objGroupNode.attribute("name").as_string(), objGroupNode.attribute("id").as_int());
+            if (objNode.child("ellipse")) {
+                LoadCircle(objGroupNode, objNode);
+            }
+            else if (objNode.child("polygon")) {
+                LoadPolygon(objGroupNode, objNode);
+            }
+            else {
+                LoadRectangle(objGroupNode, objNode);
             }
         }
     }
@@ -374,9 +370,11 @@ bool Map::LoadAllObjects(pugi::xml_node mapNode) {
     return ret;
 }
 
+//Obsoleto, usa LoadAllObjects() en su lugar
 bool Map::LoadAllPolygons(pugi::xml_node mapNode) {
     bool ret = true;
 
+    if (false) // Salta todo el codigo de la funcion
     for (pugi::xml_node objGroupNode = mapNode.child("objectgroup"); objGroupNode && ret; objGroupNode = objGroupNode.next_sibling("objectgroup"))
     {
         for (pugi::xml_node objNode = objGroupNode.child("object"); objNode && ret; objNode = objNode.next_sibling("object")) {
@@ -410,6 +408,81 @@ bool Map::LoadAllPolygons(pugi::xml_node mapNode) {
     }
 
     return ret;
+}
+
+bool Map::LoadRectangle(pugi::xml_node objGroupNode, pugi::xml_node objNode)
+{
+    bool ret = true;
+
+    int id = objNode.attribute("id").as_int();
+    float x = objNode.attribute("x").as_float();
+    float y = objNode.attribute("y").as_float();
+    float width = objNode.attribute("width").as_float();
+    float height = objNode.attribute("height").as_float();
+
+    PhysBody* object = app->physics->CreateRectangle(x + width / 2, y + height / 2, width, height, STATIC);
+    object->ctype = ColliderType::PLATFORM;
+    if (!LoadProperties(objGroupNode, object->properties)) {
+        LOG("Couldn't load properties for objectgroup %s (id %i)", objGroupNode.attribute("name").as_string(), objGroupNode.attribute("id").as_int());
+        ret = false;
+    }
+    return ret;
+}
+
+bool Map::LoadCircle(pugi::xml_node objGroupNode, pugi::xml_node objNode)
+{
+    bool ret = true;
+
+    int id = objNode.attribute("id").as_int();
+    float x = objNode.attribute("x").as_float();
+    float y = objNode.attribute("y").as_float();
+    float width = objNode.attribute("radius").as_float();
+    float height = objNode.attribute("height").as_float();
+
+    float radius = (width + height) / 2; // TODO cambiar esto para elipses no regulares (requiere nueva función de creación de elipses en el entitymanager)
+
+    PhysBody* object = app->physics->CreateCircle(x+radius, y+radius, radius, STATIC);
+    object->ctype = ColliderType::PLATFORM;
+    if (!LoadProperties(objGroupNode, object->properties)) {
+        LOG("Couldn't load properties for objectgroup %s (id %i)", objGroupNode.attribute("name").as_string(), objGroupNode.attribute("id").as_int());
+        ret = false;
+    }
+
+    return true;
+}
+
+bool Map::LoadPolygon(pugi::xml_node objGroupNode, pugi::xml_node objNode)
+{
+    bool ret = true;
+
+    float x = objNode.attribute("x").as_float();
+    float y = objNode.attribute("y").as_float();
+
+    for (pugi::xml_node polyNode = objNode.child("polygon"); polyNode && ret; polyNode = polyNode.next_sibling("polygon"))
+    {
+        SString pStr = polyNode.attribute("points").as_string();
+        std::vector<SString> coords = pStr.GetWords(' ');
+        std::vector<int> intPoints;
+
+        for (SString item : coords)
+        {
+            std::vector<SString> coord = item.GetWords(',');
+            if (coord.size() >= 2) {
+                intPoints.push_back(std::stof(coord[0].GetString()));
+                intPoints.push_back(std::stof(coord[1].GetString()));
+            }
+        }
+
+        int* pointsArray = intPoints.data();
+        int numPoints = intPoints.size();
+
+        PhysBody* object = app->physics->CreateChain(x, y, pointsArray, numPoints, STATIC);
+
+        if (!LoadProperties(objGroupNode, object->properties)) {
+            LOG("Couldn't load properties for objectgroup %s (id %i)", objGroupNode.attribute("name").as_string(), objGroupNode.attribute("id").as_int());
+        }
+    }
+    return true;
 }
 
 bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)

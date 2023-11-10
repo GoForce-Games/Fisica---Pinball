@@ -55,11 +55,12 @@
     <ClCompile Include="Source\Ball.cpp">
       <Filter>Entities\Collideable</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CollideableEntity.cpp">
-      <Filter>Entities\Collideable</Filter>
+    <ClCompile Include="Source\PinballPieces.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\PinballPieces.cpp" />
-    <ClCompile Include="Source\IntroScreen.cpp" />
+    <ClCompile Include="Source\IntroScreen.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -140,14 +141,15 @@
     <ClInclude Include="Source\Ball.h">
       <Filter>Entities\Collideable</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CollideableEntity.h">
-      <Filter>Entities\Collideable</Filter>
-    </ClInclude>
     <ClInclude Include="Source\PropertiesStruct.h">
-      <Filter>Modules\Structs</Filter>
+      <Filter>Structs</Filter>
     </ClInclude>
-    <ClInclude Include="Source\PinballPieces.h" />
-    <ClInclude Include="Source\IntroScreen.h" />
+    <ClInclude Include="Source\PinballPieces.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\IntroScreen.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -174,7 +176,7 @@
     <Filter Include="Entities\Collideable">
       <UniqueIdentifier>{c13a1f3d-be00-4aeb-ab2d-95978d3fbaf5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Structs">
+    <Filter Include="Structs">
       <UniqueIdentifier>{485843a0-6487-4beb-ab68-f8b29e235a74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
