@@ -48,5 +48,9 @@ bool Item::Update(float dt)
 
 bool Item::CleanUp()
 {
+	if (texture != nullptr) {
+		app->tex->UnLoad(texture);
+		texture = nullptr;
+	}
 	return true;
 }

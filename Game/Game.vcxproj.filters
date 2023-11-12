@@ -67,6 +67,12 @@
     <ClCompile Include="Source\Puntuation.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Reload.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ReloadPreset.h">
+      <Filter>Structs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -161,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="Source\PropertiesStruct.h">
       <Filter>Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Reload.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

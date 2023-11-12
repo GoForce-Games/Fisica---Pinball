@@ -95,6 +95,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ReloadPreset.h" />
     <ClCompile Include="Source\Ball.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\IntroScreen.cpp" />
@@ -110,6 +111,7 @@
     <ClCompile Include="Source\Cannon.cpp" />
     <ClCompile Include="Source\PinballPieces.cpp" />
     <ClCompile Include="Source\Puntuation.cpp" />
+    <ClCompile Include="Source\Reload.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
@@ -129,6 +131,7 @@
     <ClInclude Include="Source\PropertiesStruct.h" />
     <ClInclude Include="Source\Puntuation.h" />
     <ClInclude Include="Source\Queue.h" />
+    <ClInclude Include="Source\Reload.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Audio.h" />
     <ClInclude Include="Source\Input.h" />

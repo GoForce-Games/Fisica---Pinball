@@ -36,7 +36,6 @@ bool Ball::Update(float dt)
 	pbody->GetPosition(position.x, position.y);
 
 
-
 	return true;
 }
 

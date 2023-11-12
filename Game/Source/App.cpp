@@ -9,6 +9,7 @@
 #include "Puntuation.h"
 #include "ModuleFonts.h"
 #include "Physics.h"
+#include "Reload.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -37,6 +38,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	puntuation = new Puntuation();
 	fonts = new ModuleFonts();
 	entityManager = new EntityManager();
+	reloader = new Reload();
 
 
 	// Ordered for awake / Start / Update
@@ -51,6 +53,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(puntuation);
 	AddModule(fonts);
+	AddModule(reloader);
 
 	// Render last to swap buffer
 	AddModule(render);
@@ -77,6 +80,11 @@ void App::AddModule(Module* module)
 {
 	module->Init();
 	modules.Add(module);
+}
+
+pugi::xml_node App::GetConfig(const Module& m)
+{
+	return configNode.child(m.name.GetString());
 }
 
 // Called before render is available

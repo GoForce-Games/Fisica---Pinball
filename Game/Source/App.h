@@ -21,6 +21,7 @@ class Map;
 class Puntuation;
 class ModuleFonts;
 class Physics;
+class Reload;
 
 class App
 {
@@ -46,6 +47,8 @@ public:
 
 	// Add a new module to handle
 	void AddModule(Module* module);
+
+	pugi::xml_node GetConfig(const Module& m);
 
 	// Exposing some properties for reading
 	int GetArgc() const;
@@ -87,6 +90,7 @@ public:
 	Puntuation* puntuation;
 	ModuleFonts* fonts;
 	Physics* physics;
+	Reload* reloader;
 
 	bool debug;
 

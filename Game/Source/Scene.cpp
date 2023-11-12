@@ -37,6 +37,8 @@ bool Scene::Awake(pugi::xml_node& config)
 	{
 		Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
 		item->parameters = itemNode;
+		item->CleanUp();
+		item->Awake();
 	}
 
 	player = (Cannon*)app->entityManager->CreateEntity(EntityType::CANNON);
