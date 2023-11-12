@@ -57,6 +57,9 @@ public:
 
 	Properties properties;
 
+	float angle1 = 0.0f;
+	float angle2 = 0.0f;
+
 	bool setToDestroy = false;
 };
 
@@ -88,7 +91,14 @@ public:
 
 private:
 
-
+	float angle1 = 0.0f;
+	float angle2 = 0.0f;
 	// Box2D World
 	b2World* world;
+	b2Body* ball;
+	b2Body* arm;
+	b2RevoluteJoint* joint;
+	b2Body* ball2;
+	b2Body* arm2;
+	b2RevoluteJoint* joint2;
 };
