@@ -47,7 +47,7 @@ public:
     ReloadPreset* activePreset = nullptr;
     ReloadStep currentStep = NONE;
 
-    List<ReloadPreset> presetList;
+    List<ReloadPreset*> presetList;
 
     List<Module*> moduleList;
 

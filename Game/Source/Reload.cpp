@@ -22,13 +22,13 @@ bool Reload::Awake(pugi::xml_node& conf)
 	//moduleList.Add((Module*)app->map);
 	//moduleList.Add((Module*)app->intro);
 	//moduleList.Add((Module*)app->entityManager);
-	ReloadPreset preset = ReloadPreset("test", 5, 5);
-	ReloadPreset presetMap = ReloadPreset("map", 2, 2);
-	presetMap.AddUnload((Module*)app->intro);
-	presetMap.AddLoad((Module*)app->map);
-	presetMap.AddLoad((Module*)app->scene);
-	presetMap.AddLoad((Module*)app->entityManager);
-	presetMap.AddLoad((Module*)app->physics);
+	ReloadPreset* preset = new ReloadPreset("test", 5, 5);
+	ReloadPreset* presetMap = new ReloadPreset("map", 2, 2);
+	presetMap->AddUnload((Module*)app->intro);
+	presetMap->AddLoad((Module*)app->map);
+	presetMap->AddLoad((Module*)app->scene);
+	presetMap->AddLoad((Module*)app->entityManager);
+	presetMap->AddLoad((Module*)app->physics);
 
 	presetList.Add(preset);
 	presetList.Add(presetMap);
@@ -84,6 +84,14 @@ bool Reload::PostUpdate()
 
 bool Reload::CleanUp()
 {
+	for (ListItem<ReloadPreset*>* item = presetList.start; item != nullptr; item = item->next)
+	{
+		if (item->data != nullptr) {
+			RELEASE(item->data);
+		}
+	}
+	presetList.Clear();
+
 	return true;
 }
 
@@ -94,10 +102,10 @@ bool Reload::StartReload(SString presetName)
 
 		for (size_t i = 0; i < presetList.Count(); i++)
 		{
-			ListItem<ReloadPreset>* item = presetList.At(i);
-			if (item->data.name == presetName) {
+			ListItem<ReloadPreset*>* item = presetList.At(i);
+			if (item->data->name == presetName) {
 				ret = true;
-				activePreset = &(item->data);
+				activePreset = item->data;
 				currentStep = ReloadStep::FADE_OUT;
 			}
 		}
@@ -125,13 +133,15 @@ void Reload::FadeOut()
 
 void Reload::ReloadModules()
 {
-	for (ListItem<Module*>* item = moduleList.end; item != nullptr; item = item->prev)
+	
+
+	for (ListItem<Module*>* item = activePreset->unload.end; item != nullptr; item = item->prev)
 	{
 		if (item->data != nullptr) item->data->Disable();
 	}
 
 	// Algunos modulos requieren recargar la configuración al reiniciarse
-	for (ListItem<Module*>* item = moduleList.start; item != nullptr; item = item->next)
+	for (ListItem<Module*>* item = activePreset->load.start; item != nullptr; item = item->next)
 	{
 		if (item->data != nullptr && item->data->needsAwaking) {
 			pugi::xml_node config = app->GetConfig(*(item->data));
@@ -139,7 +149,7 @@ void Reload::ReloadModules()
 		}
 	}
 
-	for (ListItem<Module*>* item = moduleList.start; item != nullptr; item = item->next)
+	for (ListItem<Module*>* item = activePreset->load.start; item != nullptr; item = item->next)
 	{
 		if (item->data != nullptr) item->data->Enable();
 	}

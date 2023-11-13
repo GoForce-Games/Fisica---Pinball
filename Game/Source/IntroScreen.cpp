@@ -9,7 +9,7 @@
 
 
 IntroScreen::IntroScreen() {
-
+	name.Create("IntroScreen");
 }
 
 IntroScreen::~IntroScreen()
@@ -43,7 +43,7 @@ bool IntroScreen::CleanUp()
 {
 	if (IntroJuegoTexture != nullptr)
 	{
-		SDL_DestroyTexture(IntroJuegoTexture);
+		app->tex->UnLoad(IntroJuegoTexture);
 		IntroJuegoTexture = nullptr;	
 
 	}
