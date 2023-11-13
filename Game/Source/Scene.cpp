@@ -43,6 +43,8 @@ bool Scene::Awake(pugi::xml_node& config)
 
 	player = (Cannon*)app->entityManager->CreateEntity(EntityType::CANNON);
 
+	app->entityManager->CreateEntity(EntityType::PALA);
+
 
 	return ret;
 }

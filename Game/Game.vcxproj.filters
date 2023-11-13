@@ -73,6 +73,9 @@
     <ClCompile Include="Source\ReloadPreset.h">
       <Filter>Structs</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Pala.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -170,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="Source\Reload.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Pala.h">
+      <Filter>Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

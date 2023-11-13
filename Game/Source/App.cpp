@@ -12,6 +12,7 @@
 #include "Reload.h"
 #include "IntroScreen.h"
 
+
 #include "Defs.h"
 #include "Log.h"
 
@@ -41,6 +42,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	puntuation = new Puntuation();
 	entityManager = new EntityManager();
 	reloader = new Reload();
+	
 
 
 	// Ordered for awake / Start / Update
@@ -57,6 +59,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fonts);
 	AddModule(puntuation);
 	AddModule(reloader);
+	
 
 	// Render last to swap buffer
 	AddModule(render);

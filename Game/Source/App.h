@@ -23,6 +23,7 @@ class ModuleFonts;
 class Puntuation;
 class Physics;
 class Reload;
+class Pala;
 
 class App
 {

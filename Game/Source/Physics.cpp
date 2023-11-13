@@ -69,7 +69,7 @@ bool Physics::Start()
 	ball2->CreateFixture(&fixtureball2);*/
 	
 
-	int xball1 = 120;
+	/*int xball1 = 120;
 	int yball1 = 640 / 1.205f;
 	b2BodyDef ballBodyDef;
 	ballBodyDef.type = b2_staticBody;
@@ -133,7 +133,7 @@ bool Physics::Start()
 	jointDef2.localAnchorA.Set(PIXEL_TO_METERS(-15), 0);
 	jointDef2.localAnchorB.Set(0, 0);
 	jointDef2.collideConnected = false;
-	joint = (b2RevoluteJoint*)world->CreateJoint(&jointDef2);
+	joint = (b2RevoluteJoint*)world->CreateJoint(&jointDef2);*/
 	
 
 	return true;
@@ -263,15 +263,7 @@ bool Physics::PreUpdate()
 	jointDef2.motorSpeed = angle2 * b2_pi / -180.0f;
 	world->CreateJoint(&jointDef2);*/
 
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT /*&& joint->GetJointAngle() < 45.0f * DEGTORAD*/)
-	{
-		float rotationSpeed = 0.5f;
-		joint->SetMotorSpeed(rotationSpeed);
-	}
-	else if (joint->GetJointAngle() > 0.0f * DEGTORAD)
-	{
-		joint->SetMotorSpeed(-0.5f);
-	}
+	
 
 	// Because Box2D does not automatically broadcast collisions/contacts with sensors, 
 	// we have to manually search for collisions and "call" the equivalent to the ModulePhysics::BeginContact() ourselves...
