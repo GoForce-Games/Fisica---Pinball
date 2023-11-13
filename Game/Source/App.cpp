@@ -37,8 +37,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	scene = new Scene();
 	map = new Map();
 	intro = new IntroScreen();
-	puntuation = new Puntuation();
 	fonts = new ModuleFonts();
+	puntuation = new Puntuation();
 	entityManager = new EntityManager();
 	reloader = new Reload();
 
@@ -54,8 +54,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(scene);
 	AddModule(map);
 	AddModule(intro);
-	AddModule(puntuation);
 	AddModule(fonts);
+	AddModule(puntuation);
 	AddModule(reloader);
 
 	// Render last to swap buffer

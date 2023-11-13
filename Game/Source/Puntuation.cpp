@@ -30,8 +30,11 @@ bool Puntuation::Start()
 	bool ret = true;
 
 	scoreText = new char[MAX_SCORE_LENGTH];
-	score = 000;
+	score = 10000000;
 	numeracion = 0;
+
+	scoreFont = &(app->fonts->scoreFont);
+	textFont = &(app->fonts->textFont);
 	
 
 	return ret;
@@ -46,18 +49,14 @@ bool Puntuation::Update(float dt)
 bool Puntuation::PostUpdate()
 {
 	sprintf_s(scoreText, MAX_SCORE_LENGTH, "%7d", score);
-	/*app->fonts->BlitText(0, 16, *textFont, scoreText);*/
+	app->fonts->BlitText(0, 16, *textFont, scoreText);
 	
 	return true;
 }
 
 bool Puntuation::CleanUp()
 {
-	if (scoreText != nullptr) 
-	{
-		delete scoreText;
-		scoreText = nullptr;
-	}
+	
 	return true;
 }
 

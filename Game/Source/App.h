@@ -19,8 +19,8 @@ class Scene;
 class EntityManager;
 class Map;
 class IntroScreen;
-class Puntuation;
 class ModuleFonts;
+class Puntuation;
 class Physics;
 class Reload;
 
@@ -89,8 +89,8 @@ public:
 	EntityManager* entityManager;
 	Map* map;
 	IntroScreen* intro;
-	Puntuation* puntuation;
 	ModuleFonts* fonts;
+	Puntuation* puntuation;
 	Physics* physics;
 	Reload* reloader;
 		

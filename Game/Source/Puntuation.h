@@ -31,6 +31,7 @@ public:
 
 	int score;
 	int numeracion;
+
 	int *scoreFont;
 	int *textFont;
 	char* scoreText = nullptr;

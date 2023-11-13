@@ -29,6 +29,7 @@ bool Reload::Awake(pugi::xml_node& conf)
 	presetMap->AddLoad((Module*)app->scene);
 	presetMap->AddLoad((Module*)app->entityManager);
 	presetMap->AddLoad((Module*)app->physics);
+	presetMap->AddLoad((Module*)app->puntuation);
 
 	presetList.Add(preset);
 	presetList.Add(presetMap);
