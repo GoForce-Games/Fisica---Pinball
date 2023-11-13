@@ -23,11 +23,7 @@
 
   <scene>
     <map path="Assets/Maps/" name="Pinball.tmx"/>
-    <item x="56" y="315" texturepath="Assets/Textures/goldCoin.png"/>
-	<item x="16" y="312" texturepath="Assets/Textures/goldCoin.png"/>
-	<item x="84" y="152" texturepath="Assets/Textures/goldCoin.png"/>
-	<item x="20" y="472" texturepath="Assets/Textures/goldCoin.png"/>
-	<item x="50" y="472" texturepath="Assets/Textures/goldCoin.png"/>
+
   </scene>
 
 	<entitymanager>
