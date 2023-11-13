@@ -9,6 +9,7 @@
 
 #include "Defs.h"
 #include "Log.h"
+#include "Bumper.h"
 
 Scene::Scene() : Module()
 {
@@ -33,12 +34,12 @@ bool Scene::Awake(pugi::xml_node& config)
 
 	// iterate all objects in the scene
 	// Check https://pugixml.org/docs/quickstart.html#access
-	for (pugi::xml_node itemNode = config.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
+	for (pugi::xml_node bumperNode = config.child("bumper"); bumperNode; bumperNode = bumperNode.next_sibling("bumper"))
 	{
-		Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
-		item->parameters = itemNode;
-		item->CleanUp();
-		item->Awake();
+		Bumper* bumper = (Bumper*)app->entityManager->CreateEntity(EntityType::BUMPER);
+		bumper->parameters = bumperNode;
+		bumper->CleanUp();
+		bumper->Awake();
 	}
 
 	player = (Cannon*)app->entityManager->CreateEntity(EntityType::CANNON);

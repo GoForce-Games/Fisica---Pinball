@@ -3,7 +3,6 @@
 
 #include "Module.h"
 #include "Cannon.h"
-#include "Item.h"
 
 struct SDL_Texture;
 

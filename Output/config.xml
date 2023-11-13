@@ -23,11 +23,11 @@
 
   <scene>
     <map path="Assets/Maps/" name="Pinball.tmx"/>
-
   </scene>
 
 	<entitymanager>
 		<entitypresets>
+			<bumper x="160" y ="160" radius="64" texturepath="Assets/Textures/bumper.png" launchPower="2.0f"/>
 			<cannon x="316" y="560" texturepath="Assets/Textures/player1.png" launchAngle="90.0f" launchPowerIncrease="0.01f"/>
 			<ball radius="4"/>
 		</entitypresets>

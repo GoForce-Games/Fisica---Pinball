@@ -1,6 +1,7 @@
 #include "Bumper.h"
 #include "Ball.h"
 
+#include "App.h"
 #include "Physics.h"
 
 Bumper::Bumper() : Entity(EntityType::BUMPER)
@@ -14,11 +15,19 @@ Bumper::~Bumper()
 
 bool Bumper::Awake()
 {
-	return false;
+	position.x = parameters.attribute("x").as_int();
+	position.y = parameters.attribute("y").as_int();
+	radius = parameters.attribute("radius").as_float();
+	launchPower = parameters.attribute("launchPower").as_float();
+	texturePath = parameters.attribute("texturepath").as_string();
+
+	return true;
 }
 
 bool Bumper::Start()
 {
+	pbody = app->physics->CreateCircle(position.x, position.y, radius, bodyType::STATIC);
+	pbody->listener = this;
 	return true;
 }
 

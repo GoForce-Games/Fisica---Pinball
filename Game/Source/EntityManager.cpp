@@ -5,7 +5,9 @@
 #include "Scene.h"
 
 #include "Cannon.h"
+#include "Item.h"
 #include "Ball.h"
+#include "Bumper.h"
 #include "Pala.h"
 
 #include "Defs.h"
@@ -94,6 +96,7 @@ Entity* EntityManager::CreateEntity(EntityType type)
 	case EntityType::CANNON:	entity = new Cannon(); break;
 	case EntityType::ITEM:		entity = new Item(); break;
 	case EntityType::BALL:		entity = new Ball(); break;
+	case EntityType::BUMPER:	entity = new Bumper(); break;
 	case EntityType::PALA:       entity = new Pala(); break;
 	default:
 		break;

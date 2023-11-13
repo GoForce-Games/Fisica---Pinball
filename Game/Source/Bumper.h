@@ -18,5 +18,13 @@ public:
 
 	void OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* contactInfo) override;
 
+public:
+
+	float radius;
+	float launchPower;
+	SString texturePath;
+
+	SDL_Texture* texture = nullptr;
+
 };
 

@@ -321,7 +321,7 @@ bool Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
     int i = 0;
     for (tile = node.child("data").child("tile"); tile && ret; tile = tile.next_sibling("tile"))
     {
-        layer->data[i] = tile.attribute("gid").as_int();
+        layer->data[i] = tile.attribute("gid").as_uint();
         i++;
     }
 
@@ -407,6 +407,11 @@ bool Map::LoadAllPolygons(pugi::xml_node mapNode) {
     }
 
     return ret;
+}
+
+bool Map::LoadAllEntities(pugi::xml_node mapNode)
+{
+    return true;
 }
 
 bool Map::LoadRectangle(pugi::xml_node objGroupNode, pugi::xml_node objNode)

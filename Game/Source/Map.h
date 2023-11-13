@@ -112,6 +112,7 @@ private:
 	bool LoadAllObjects(pugi::xml_node mapNode);
 	bool LoadAllPolygons(pugi::xml_node mapNode);
 
+	bool LoadAllEntities(pugi::xml_node mapNode);
 
 	bool LoadRectangle(pugi::xml_node objGroupNode, pugi::xml_node objectNode);
 	bool LoadCircle(pugi::xml_node objGroupNode, pugi::xml_node objectNode);
