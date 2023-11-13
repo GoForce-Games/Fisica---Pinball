@@ -20,9 +20,18 @@ bool Reload::Awake(pugi::xml_node& conf)
 	//moduleList.Add((Module*)app->physics);
 	//moduleList.Add((Module*)app->scene);
 	//moduleList.Add((Module*)app->map);
+	//moduleList.Add((Module*)app->intro);
 	//moduleList.Add((Module*)app->entityManager);
 	ReloadPreset preset = ReloadPreset("test", 5, 5);
+	ReloadPreset presetMap = ReloadPreset("map", 2, 2);
+	presetMap.AddUnload((Module*)app->intro);
+	presetMap.AddLoad((Module*)app->map);
+	presetMap.AddLoad((Module*)app->scene);
+	presetMap.AddLoad((Module*)app->entityManager);
+	presetMap.AddLoad((Module*)app->physics);
+
 	presetList.Add(preset);
+	presetList.Add(presetMap);
 
 
 	return true;

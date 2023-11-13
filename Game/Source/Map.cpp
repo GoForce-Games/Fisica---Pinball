@@ -1,9 +1,9 @@
-
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
 #include "Map.h"
 #include "Physics.h"
+#include "IntroScreen.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -22,7 +22,7 @@ Map::~Map()
 
 // Called before render is available
 bool Map::Awake(pugi::xml_node& config)
-{
+{    
     LOG("Loading Map Parser");
     bool ret = true;
 
@@ -34,7 +34,6 @@ bool Map::Awake(pugi::xml_node& config)
 }
 
 bool Map::Start() {
-
     //Calls the functon to load the map, make sure that the filename is assigned
     SString mapPath = path;
     mapPath += name;

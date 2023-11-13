@@ -10,6 +10,7 @@
 #include "ModuleFonts.h"
 #include "Physics.h"
 #include "Reload.h"
+#include "IntroScreen.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -35,6 +36,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics();
 	scene = new Scene();
 	map = new Map();
+	intro = new IntroScreen();
 	puntuation = new Puntuation();
 	fonts = new ModuleFonts();
 	entityManager = new EntityManager();
@@ -51,6 +53,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(entityManager);
 	AddModule(scene);
 	AddModule(map);
+	AddModule(intro);
 	AddModule(puntuation);
 	AddModule(fonts);
 	AddModule(reloader);

@@ -11,8 +11,8 @@ public:
 	IntroScreen();
 	~IntroScreen();
 
-	bool Start() override;
-	bool Update();
+	bool Start();
+	bool Update(float dt);
 	bool CleanUp();
 
 	SDL_Texture* IntroJuegoTexture;

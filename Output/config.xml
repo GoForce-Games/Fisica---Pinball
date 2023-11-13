@@ -28,7 +28,6 @@
 
 	<entitymanager>
 		<entitypresets>
-			<item x="0" y="0" texturepath="Assets/Textures/goldCoin.png"/>
 			<cannon x="316" y="576" texturepath="Assets/Textures/player1.png" launchAngle="90.0f" launchPowerIncrease="0.01f"/>
 			<ball radius="4"/>
 		</entitypresets>

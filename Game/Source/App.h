@@ -18,6 +18,7 @@ class Audio;
 class Scene;
 class EntityManager;
 class Map;
+class IntroScreen;
 class Puntuation;
 class ModuleFonts;
 class Physics;
@@ -87,11 +88,12 @@ public:
 	Scene* scene;
 	EntityManager* entityManager;
 	Map* map;
+	IntroScreen* intro;
 	Puntuation* puntuation;
 	ModuleFonts* fonts;
 	Physics* physics;
 	Reload* reloader;
-
+		
 	bool debug;
 
 private:
