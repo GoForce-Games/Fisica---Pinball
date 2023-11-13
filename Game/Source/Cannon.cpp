@@ -38,7 +38,9 @@ bool Cannon::Start() {
 
 	//initilize textures
 	texture = app->tex->Load(texturePath);
-
+	int size = 16;
+	pbody = app->physics->CreateRectangleSensor(position.x, position.y+size+5, size, size, bodyType::STATIC);
+	pbody->listener = this;
 
 	return true;
 }
@@ -73,17 +75,23 @@ bool Cannon::CleanUp()
 	return true;
 }
 
-void Cannon::OnCollision(PhysBody* physA, PhysBody* physB) {
-
+void Cannon::OnCollision(PhysBody* physA, PhysBody* physB, b2Contact* contactInfo) {
+	if (ball == nullptr) {
+		Ball* tempBall = dynamic_cast<Ball*>(physB->boundEntity);
+		if (tempBall) {
+			ball = tempBall;
+			canLaunch = true;
+		}
+	}
 }
 
 void Cannon::LoadBall()
 {
 	if (canLaunch && ball == nullptr) {
-		ball = (Ball*) app->entityManager->CreateEntity(EntityType::BALL);
+		ball = (Ball*)app->entityManager->CreateEntity(EntityType::BALL);
 		ball->position.x = position.x;
 		ball->position.y = position.y;
-		ball->Awake();
+		if (ball->pbody != nullptr) ball->Awake();
 	}
 }
 

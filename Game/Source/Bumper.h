@@ -1,13 +1,12 @@
 #pragma once
 #include "Entity.h"
-
-class Ball : public Entity
+class Bumper : public Entity
 {
 public:
 
-    Ball();
+	Bumper();
 
-    ~Ball();
+	~Bumper();
 
 	bool Awake();
 
@@ -18,8 +17,6 @@ public:
 	bool CleanUp();
 
 	void OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* contactInfo) override;
-
-	void SetPosition(const iPoint& newPos) override;
 
 };
 

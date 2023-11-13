@@ -24,7 +24,7 @@ public:
 
 	bool CleanUp();
 
-	void OnCollision(PhysBody* physA, PhysBody* physB);
+	void OnCollision(PhysBody* physA, PhysBody* physB, b2Contact* contactInfo) override;
 
 	void LoadBall();
 

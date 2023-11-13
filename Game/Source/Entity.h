@@ -14,6 +14,8 @@ enum class EntityType
 	CANNON,
 	BALL,
 	ITEM,
+	PALA,
+	BUMPER,
 	UNKNOWN
 };
 

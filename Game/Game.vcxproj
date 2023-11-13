@@ -95,6 +95,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Bumper.cpp" />
     <ClCompile Include="Source\ReloadPreset.h" />
     <ClCompile Include="Source\Ball.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
@@ -117,6 +118,7 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
+    <ClInclude Include="Source\Bumper.h" />
     <ClInclude Include="Source\Ball.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
