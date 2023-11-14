@@ -41,8 +41,8 @@ bool Pala::Start() {
 	
 	PhysBody* pbodyCircle1 = app->physics->CreateCircle(115, 525, 5, bodyType::STATIC);
 	PhysBody* pbodyCircle2 = app->physics->CreateCircle(220, 525, 5, bodyType::STATIC);
-	PhysBody* pbodyRect1 = app->physics->CreateRectangle(135, 505, 50, 15, bodyType::DYNAMIC);
-	PhysBody* pbodyRect2 = app->physics->CreateRectangle(200, 535, 50, 15, bodyType::DYNAMIC);
+	PhysBody* pbodyRect1 = app->physics->CreateRectangle(135, 505, 45, 10, bodyType::DYNAMIC);
+	PhysBody* pbodyRect2 = app->physics->CreateRectangle(200, 535, 45, 10, bodyType::DYNAMIC);
 
 	
 	ball1 = pbodyCircle1->body;
@@ -57,6 +57,9 @@ bool Pala::Start() {
 	jointDef1.bodyB = arm1;
 	jointDef1.localAnchorA.Set(0, 0);
 	jointDef1.localAnchorB.Set(-0.5, -0.1);
+	jointDef1.enableLimit = true; 
+	jointDef1.lowerAngle = -0.25f * b2_pi; 
+	jointDef1.upperAngle = 0.1f * b2_pi; 
 	jointDef1.enableMotor = true;
 	jointDef1.motorSpeed = 0.1;
 	jointDef1.maxMotorTorque = 500.0f;
@@ -65,8 +68,11 @@ bool Pala::Start() {
 
 	
 	jointDef2.Initialize(ball2, arm2, ball2->GetWorldCenter());
-	jointDef1.localAnchorA.Set(0, 0);
-	jointDef1.localAnchorB.Set(0.5, 0.1);
+	jointDef2.localAnchorA.Set(0, 0);
+	jointDef2.localAnchorB.Set(0.5, -0.1);
+	jointDef2.enableLimit = true;
+	jointDef2.lowerAngle = -0.1f * b2_pi;
+	jointDef2.upperAngle = 0.25f * b2_pi;
 	jointDef2.enableMotor = true;
 	jointDef2.motorSpeed = 0.1;
 	jointDef2.maxMotorTorque = 500.0f;
@@ -165,21 +171,20 @@ bool Pala::Update(float dt) {
 
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT && joint1->GetJointAngle() < 45.0f * DEGTORAD)
 	{
-		/*float rotationSpeed = 0.5f;
-		joint1->SetMotorSpeed(rotationSpeed);*/
-		joint1->SetMotorSpeed(-4.5f);
+		
+		joint1->SetMotorSpeed(-19.5f);
 	}
 	else  
 	{
-		joint1->SetMotorSpeed(3.9f);
+		joint1->SetMotorSpeed(10.9f);
 	}
 	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT && joint2->GetJointAngle() < 45.0f * DEGTORAD)
 	{
-		joint2->SetMotorSpeed(04.5f);
+		joint2->SetMotorSpeed(19.5f);
 	}
 	else if (joint2->GetJointAngle() > 0.0f * DEGTORAD)
 	{
-		joint2->SetMotorSpeed(-3.9f);
+		joint2->SetMotorSpeed(-10.9f);
 	}
 
 	
