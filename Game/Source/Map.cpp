@@ -83,8 +83,8 @@ bool Map::Update(float dt)
         mapLayerItem = mapLayerItem->next;
 
     }
-    sprintf_s(scoreText, 100, "%d", score);
-    app->fonts->BlitText(20, 50, textFont, scoreText);  
+    sprintf_s(scoreText, 10, "%7d", score);
+    app->fonts->BlitText(250, 50, textFont, scoreText);  
 
     return true;
 }

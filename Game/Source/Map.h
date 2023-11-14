@@ -129,12 +129,12 @@ private:
 
 	bool mapLoaded;
 
-	int score = 100;
+	int score = 123;
 	int numeracion;
 
 	int scoreFont2;
 	int textFont = -1;
-	char scoreText[100] = { "\0" };
+	char scoreText[10] = { "\0" };
 };
 
 #endif // __MAP_H__
