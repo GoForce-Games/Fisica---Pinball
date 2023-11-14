@@ -42,7 +42,6 @@ bool Map::Start() {
     char lookupTable[] = { " !\"#$%&\'()*+,-./0123456789:;<=>?çabcdefghijklmnopqrstuvwxyz´`¨_|º" };
     textFont = app->fonts->Load("Assets/Textures/fonts4.png", lookupTable, 4);
 
-    score = 10000000;
 
 
     SString mapPath = path;
@@ -84,8 +83,8 @@ bool Map::Update(float dt)
         mapLayerItem = mapLayerItem->next;
 
     }
-    sprintf_s(scoreText, 100, "score %7d", score);
-    app->fonts->BlitText(-20, -20, textFont, scoreText);  
+    sprintf_s(scoreText, 100, "%d", score);
+    app->fonts->BlitText(20, 50, textFont, scoreText);  
 
     return true;
 }

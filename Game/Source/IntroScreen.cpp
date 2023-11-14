@@ -6,6 +6,7 @@
 #include "Reload.h"
 #include "Scene.h"
 #include "Map.h"
+#include "Audio.h"
 
 
 IntroScreen::IntroScreen() {
@@ -34,6 +35,7 @@ bool IntroScreen::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_SPACE))
 	{		
 		app->reloader->StartReload("map");
+		app->audio->PlayMusic("Assets/Audio/Music/musicaFondo.ogg");
 	}
 
 	return true;

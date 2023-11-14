@@ -41,7 +41,7 @@ bool Puntuation::Start()
 
 }
 
-bool Puntuation::Update(float dt)
+bool Puntuation::Update(float dt)	
 {
 	return true;
 }
