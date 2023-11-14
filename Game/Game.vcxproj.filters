@@ -76,6 +76,7 @@
     <ClCompile Include="Source\Pala.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Bumper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -177,6 +178,7 @@
     <ClInclude Include="Source\Pala.h">
       <Filter>Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Bumper.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

@@ -24,15 +24,8 @@ ModuleFonts::~ModuleFonts()
 
 bool ModuleFonts::Start()
 {
-	char lookupTable[] = { " !\"#$%&\'()*+,-./0123456789:;<=>?çabcdefghijklmnopqrstuvwxyz´`¨_|º" };
-	char specialNumbers[] = { "0123456789:PT+-" };
-	char scoreTable[] = { "0123456789" };
-
-	textFont = app->fonts->Load("Assets/Fonts/fonts4.png", lookupTable, 4);
-	scoreFont = app->fonts->Load("Assets/Fonts/fonts3.png", specialNumbers, 1);
-	scoreFont2 = app->fonts->Load("Assets/Fonts/fonts5.png", scoreTable, 1);
-
 	bool ret = true;
+
 	return ret;
 }
 

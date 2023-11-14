@@ -1,6 +1,7 @@
 #ifndef __MAP_H__
 #define __MAP_H__
 
+
 #include "Module.h"
 #include "List.h"
 #include "Point.h"
@@ -127,6 +128,13 @@ public:
 private:
 
 	bool mapLoaded;
+
+	int score;
+	int numeracion;
+
+	int scoreFont2;
+	int textFont = -1;
+	char scoreText[100] = { "\0" };
 };
 
 #endif // __MAP_H__

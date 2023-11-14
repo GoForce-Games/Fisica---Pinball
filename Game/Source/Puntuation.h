@@ -29,12 +29,12 @@ public:
 
 
 
-	int score;
+	/*int score;
 	int numeracion;
 
 	int *scoreFont;
 	int *textFont;
-	char* scoreText = nullptr;
+	char* scoreText = nullptr;*/
 	
   
 };

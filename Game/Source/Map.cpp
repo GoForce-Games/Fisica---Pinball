@@ -4,6 +4,9 @@
 #include "Map.h"
 #include "Physics.h"
 #include "IntroScreen.h"
+#include "ModuleFonts.h"
+#include <sstream>
+#include <string.h>
 
 #include "Defs.h"
 #include "Log.h"
@@ -35,6 +38,13 @@ bool Map::Awake(pugi::xml_node& config)
 
 bool Map::Start() {
     //Calls the functon to load the map, make sure that the filename is assigned
+
+    char lookupTable[] = { " !\"#$%&\'()*+,-./0123456789:;<=>?çabcdefghijklmnopqrstuvwxyz´`¨_|º" };
+    textFont = app->fonts->Load("Assets/Textures/fonts4.png", lookupTable, 4);
+
+    score = 10000000;
+
+
     SString mapPath = path;
     mapPath += name;
     bool ret = Load(mapPath);
@@ -74,6 +84,8 @@ bool Map::Update(float dt)
         mapLayerItem = mapLayerItem->next;
 
     }
+    sprintf_s(scoreText, 100, "score %7d", score);
+    app->fonts->BlitText(-20, -20, textFont, scoreText);  
 
     return true;
 }
