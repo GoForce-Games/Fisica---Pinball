@@ -89,12 +89,14 @@ public:
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 
+	b2World* world;
+
 private:
 
 	float angle1 = 0.0f;
 	float angle2 = 0.0f;
 	// Box2D World
-	b2World* world;
+	
 	b2Body* ball;
 	b2Body* arm;
 	b2RevoluteJoint* joint;

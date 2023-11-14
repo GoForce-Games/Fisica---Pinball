@@ -12,14 +12,10 @@
 #include "Box2D/Box2D/Box2D.h"
 
 
-#ifdef _DEBUG
-#pragma comment( lib, "../Game/Source/External/Box2D/libx86/DebugLib/Box2D.lib" )
-#else
-#pragma comment( lib, "../Game/Source/External/Box2D/libx86/ReleaseLib/Box2D.lib" )
-#endif
+
 
 Pala::Pala() : Entity(EntityType::PALA) {
-	world = NULL;
+	
 }
 
 Pala::~Pala() {}
@@ -31,7 +27,7 @@ bool Pala::Awake() {
 
 
 bool Pala::Start() {
-	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
+	
 
 	// Set this module as a listener for contacts
 	
@@ -43,10 +39,38 @@ bool Pala::Start() {
 
 	
 	
-	pbody = app->physics->CreateCircle(115, 530, 5, bodyType::STATIC);
-	pbody = app->physics->CreateCircle(220, 530, 5, bodyType::STATIC);
-	pbody = app->physics->CreateRectangle(135, 535, 50, 15, bodyType::STATIC);
-	pbody = app->physics->CreateRectangle(200, 535, 50, 15, bodyType::STATIC);
+	PhysBody* pbodyCircle1 = app->physics->CreateCircle(115, 525, 5, bodyType::STATIC);
+	PhysBody* pbodyCircle2 = app->physics->CreateCircle(220, 525, 5, bodyType::STATIC);
+	PhysBody* pbodyRect1 = app->physics->CreateRectangle(135, 505, 50, 15, bodyType::DYNAMIC);
+	PhysBody* pbodyRect2 = app->physics->CreateRectangle(200, 535, 50, 15, bodyType::DYNAMIC);
+
+	
+	ball1 = pbodyCircle1->body;
+	ball2 = pbodyCircle2->body;
+	arm1 = pbodyRect1->body;
+	arm2 = pbodyRect2->body;
+
+
+	
+	jointDef1.Initialize(ball1, arm1, ball1->GetWorldCenter());
+	jointDef1.bodyA = ball1;
+	jointDef1.bodyB = arm1;
+	jointDef1.localAnchorA.Set(0, 0);
+	jointDef1.localAnchorB.Set(-0.5, -0.1);
+	jointDef1.enableMotor = true;
+	jointDef1.motorSpeed = 0.1;
+	jointDef1.maxMotorTorque = 500.0f;
+	joint1 = (b2RevoluteJoint*) app->physics->world->CreateJoint(&jointDef1);
+
+
+	
+	jointDef2.Initialize(ball2, arm2, ball2->GetWorldCenter());
+	jointDef1.localAnchorA.Set(0, 0);
+	jointDef1.localAnchorB.Set(0.5, 0.1);
+	jointDef2.enableMotor = true;
+	jointDef2.motorSpeed = 0.1;
+	jointDef2.maxMotorTorque = 500.0f;
+	joint2 = (b2RevoluteJoint*) app->physics->world->CreateJoint(&jointDef2);
 	/*
 	b2BodyDef ballBodyDef;
 	ballBodyDef.type = b2_staticBody;
@@ -119,7 +143,9 @@ bool Pala::Start() {
 
 bool Pala::Update(float dt) {
 
-	world->Step(1.0f / 60.0f, 6, 2);
+	
+
+	
 
 	//for (b2Contact* c = world->GetContactList(); c; c = c->GetNext())
 	//{
@@ -137,28 +163,26 @@ bool Pala::Update(float dt) {
 
     
 
-	/*if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT && joint->GetJointAngle() < 45.0f * DEGTORAD)
+	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT && joint1->GetJointAngle() < 45.0f * DEGTORAD)
 	{
-		float rotationSpeed = 0.5f;
-		joint->SetMotorSpeed(rotationSpeed);
+		/*float rotationSpeed = 0.5f;
+		joint1->SetMotorSpeed(rotationSpeed);*/
+		joint1->SetMotorSpeed(-4.5f);
 	}
-	else if (joint->GetJointAngle() > 0.0f * DEGTORAD)
+	else  
 	{
-		joint->SetMotorSpeed(-0.5f);
+		joint1->SetMotorSpeed(3.9f);
 	}
-	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT && joint->GetJointAngle() < 45.0f * DEGTORAD)
+	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT && joint2->GetJointAngle() < 45.0f * DEGTORAD)
 	{
-		float rotationSpeed = 0.5f;
-		joint->SetMotorSpeed(rotationSpeed);
+		joint2->SetMotorSpeed(04.5f);
 	}
-	else if (joint->GetJointAngle() > 0.0f * DEGTORAD)
+	else if (joint2->GetJointAngle() > 0.0f * DEGTORAD)
 	{
-		joint->SetMotorSpeed(-0.5f);
+		joint2->SetMotorSpeed(-3.9f);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
-		app->debug = !app->debug;*/
-
+	
 	//  Iterate all objects in the world and draw the bodies
 	
 	return true;
