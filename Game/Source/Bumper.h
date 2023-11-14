@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "SDL/include/SDL_rect.h"
 class Bumper : public Entity
 {
 public:
@@ -20,7 +21,9 @@ public:
 
 public:
 
-	float radius;
+	int pointValue;
+
+	int radius;
 	float launchPower;
 	SString texturePath;
 
