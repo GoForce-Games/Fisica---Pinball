@@ -144,7 +144,7 @@ void Reload::ReloadModules()
 	// Algunos modulos requieren recargar la configuración al reiniciarse
 	for (ListItem<Module*>* item = activePreset->load.start; item != nullptr; item = item->next)
 	{
-		if (item->data != nullptr && item->data->needsAwaking) {
+		if (item->data != nullptr && item->data->needsAwaking && !item->data->awoken) {
 			pugi::xml_node config = app->GetConfig(*(item->data));
 			item->data->Awake(config);
 		}

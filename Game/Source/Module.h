@@ -77,6 +77,8 @@ public:
 		{
 			CleanUp();
 			active = false;
+			if (needsAwaking)
+				awoken = false;
 		}
 		return !active;
 	}
