@@ -147,122 +147,6 @@ bool Physics::PreUpdate()
 	// Step (update) the World
 	// WARNING: WE ARE STEPPING BY CONSTANT 1/60 SECONDS!
 	world->Step(1.0f / 60.0f, 6, 2);
-
-	/*int x1 = 350 / 2.9;
-	int y1 = 640 / 4.3f;
-	int diameter1 = 117 / 2;
-	b2BodyDef body1;
-	body1.type = b2_staticBody;
-	body1.position.Set(PIXEL_TO_METERS(x1), PIXEL_TO_METERS(y1));
-	b2Body* b1 = world->CreateBody(&body1);
-	b2CircleShape shape1;
-	shape1.m_radius = PIXEL_TO_METERS(diameter1) * 0.5f;
-	b2FixtureDef fixture1;
-	fixture1.shape = &shape1;
-	b1->CreateFixture(&fixture1);
-
-
-	int x2 = 350 / 1.46;
-	int y2 = 640 / 3.67f;
-	int diameter2 = 117 / 2;
-	b2BodyDef body2;
-	body2.type = b2_staticBody;
-	body2.position.Set(PIXEL_TO_METERS(x2), PIXEL_TO_METERS(y2));
-	b2Body* b2 = world->CreateBody(&body2);
-	b2CircleShape shape2;
-	shape2.m_radius = PIXEL_TO_METERS(diameter2) * 0.5f;
-	b2FixtureDef fixture2;
-	fixture2.shape = &shape2;
-	b2->CreateFixture(&fixture2);
-
-
-	int x3 = 350 / 2.7;
-	int y3 = 640 / 2.48f;
-	int diameter3 = 117 / 2;
-	b2BodyDef body3;
-	body3.type = b2_staticBody;
-	body3.position.Set(PIXEL_TO_METERS(x3), PIXEL_TO_METERS(y3));
-	b2Body* b3 = world->CreateBody(&body3);
-	b2CircleShape shape3;
-	shape3.m_radius = PIXEL_TO_METERS(diameter3) * 0.5f;
-	b2FixtureDef fixture3;
-	fixture3.shape = &shape3;
-	b3->CreateFixture(&fixture3);*/
-
-
-
-
-	/*int xball1 = 350 / 3.0;
-	int yball1 = 640 / 1.205f;
-	int diameterball1 = 30 / 2;
-	b2BodyDef bodyball1;
-	bodyball1.type = b2_staticBody;
-	bodyball1.position.Set(PIXEL_TO_METERS(xball1), PIXEL_TO_METERS(yball1));
-	b2Body* ball1 = world->CreateBody(&bodyball1);
-	b2CircleShape shapeball1;
-	shapeball1.m_radius = PIXEL_TO_METERS(diameterball1) * 0.5f;
-	b2FixtureDef fixtureball1;
-	fixtureball1.shape = &shapeball1;
-	ball1->CreateFixture(&fixtureball1);
-
-	int xrec = 135;
-	int yrec = 530;
-	b2BodyDef bodyrect1;
-	bodyrect1.type = b2_dynamicBody;
-	float width = PIXEL_TO_METERS(50);
-	float height = PIXEL_TO_METERS(15);
-	bodyrect1.position.Set(PIXEL_TO_METERS(xrec), PIXEL_TO_METERS(yrec));
-	b2Body* brect1 = world->CreateBody(&bodyrect1);
-	b2PolygonShape shaperect1;
-	shaperect1.SetAsBox(width / 2.0f, height / 2.0f);
-	b2FixtureDef fixturerect1;
-	fixturerect1.shape = &shaperect1;
-	brect1->CreateFixture(&fixturerect1);
-
-	b2RevoluteJointDef jointDef1;
-	b2Vec2 anchor1(PIXEL_TO_METERS(xball1), PIXEL_TO_METERS(yball1));
-	jointDef1.Initialize(ball1, brect1, anchor1);
-	jointDef1.enableMotor = true;
-	jointDef1.motorSpeed = angle1 * b2_pi / 180.0f; 
-	world->CreateJoint(&jointDef1);
-
-
-
-
-	int xball2 = 350 / 1.55;
-	int yball2 = 640 / 1.205f;
-	int diameterball2 = 30 / 2;
-	b2BodyDef bodyball2;
-	bodyball2.type = b2_staticBody;
-	bodyball2.position.Set(PIXEL_TO_METERS(xball2), PIXEL_TO_METERS(yball2));
-	b2Body* ball2 = world->CreateBody(&bodyball2);
-	b2CircleShape shapeball2;
-	shapeball2.m_radius = PIXEL_TO_METERS(diameterball2) * 0.5f;
-	b2FixtureDef fixtureball2;
-	fixtureball2.shape = &shapeball2;
-	ball2->CreateFixture(&fixtureball2);
-
-	int xrec2 = 205;
-	int yrec2 = 530;
-	b2BodyDef bodyrect2;
-	bodyrect2.type = b2_staticBody;
-	float width2 = PIXEL_TO_METERS(50);
-	float height2 = PIXEL_TO_METERS(15);
-	bodyrect2.position.Set(PIXEL_TO_METERS(xrec2), PIXEL_TO_METERS(yrec2));
-	b2Body* brect2 = world->CreateBody(&bodyrect2);
-	b2PolygonShape shaperect2;
-	shaperect2.SetAsBox(width2 / 2.0f, height2 / 2.0f);
-	b2FixtureDef fixturerect2;
-	fixturerect2.shape = &shaperect2;
-	brect2->CreateFixture(&fixturerect2);
-
-	b2RevoluteJointDef jointDef2;
-	b2Vec2 anchor2(PIXEL_TO_METERS(xball1), PIXEL_TO_METERS(yball1));
-	jointDef2.Initialize(ball1, brect1, anchor2);
-	jointDef2.enableMotor = true;
-	jointDef2.motorSpeed = angle2 * b2_pi / -180.0f;
-	world->CreateJoint(&jointDef2);*/
-
 	
 
 	// Because Box2D does not automatically broadcast collisions/contacts with sensors, 
@@ -451,14 +335,6 @@ bool Physics::PostUpdate()
 {
 	bool ret = true;
 
-	/*if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT && angle1 < 45.0f) {
-		angle1 += 0.9f;
-	}
-	else {
-		if (angle1 > 0.0f) {
-			angle1 -= 0.9f;
-		}
-	}*/
 
 
 	// Activate or deactivate debug mode

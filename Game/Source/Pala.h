@@ -32,6 +32,7 @@ public:
 private:
 
 	SDL_Texture* texture;
+	SDL_Texture* texture2;
 	const char* texturePath;
 	PhysBody* pbody;
 
@@ -46,6 +47,7 @@ private:
 	b2Body* arm2;
 	b2RevoluteJointDef jointDef2;
 	b2RevoluteJoint* joint2;
+
 };
 
 #endif // __PALA_H__
