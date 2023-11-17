@@ -28,6 +28,7 @@ public:
 	SString texturePath;
 
 	SDL_Texture* texture = nullptr;
+	int bumperSound;
 
 };
 
