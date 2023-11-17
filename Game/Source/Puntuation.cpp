@@ -61,6 +61,6 @@ bool Puntuation::CleanUp()
 
 void Puntuation::AddScore(int s)
 {
-	score = s;
+	score += s;
 	b2Clamp(score, 0, 99999);
 }
