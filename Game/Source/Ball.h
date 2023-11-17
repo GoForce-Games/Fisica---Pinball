@@ -25,5 +25,10 @@ public:
 	const char* texturepath;
 	SDL_Texture* ballTex = nullptr;
 
+	float accel = 0.2f;
+	
+
+	bool godMode = false;
+
 };
 
