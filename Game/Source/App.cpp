@@ -52,9 +52,9 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(physics);
+	AddModule(map);
 	AddModule(entityManager);
 	AddModule(scene);
-	AddModule(map);
 	AddModule(intro);
 	AddModule(fonts);
 	AddModule(puntuation);
