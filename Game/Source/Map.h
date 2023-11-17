@@ -129,7 +129,7 @@ private:
 
 	bool mapLoaded;
 
-	int score = 123;
+	int score = 12;
 	int numeracion;
 
 	int scoreFont2;

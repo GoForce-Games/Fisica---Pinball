@@ -39,8 +39,8 @@ bool Map::Awake(pugi::xml_node& config)
 bool Map::Start() {
     //Calls the functon to load the map, make sure that the filename is assigned
 
-    char lookupTable[] = { " !\"#$%&\'()*+,-./0123456789:;<=>?çabcdefghijklmnopqrstuvwxyz´`¨_|º" };
-    textFont = app->fonts->Load("Assets/Textures/fonts4.png", lookupTable, 4);
+    char lookupTable[] = { "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[ç]^_`abcdefghijklmnopqrstuvwxyz{|}¨+" };
+    textFont = app->fonts->Load("Assets/Fonts/font1.png", lookupTable, 5);
 
 
 
