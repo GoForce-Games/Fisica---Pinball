@@ -5,6 +5,7 @@
 #include "SString.h"
 #include "Input.h"
 #include "Render.h"
+#include "PugiXml/src/pugixml.hpp"
 
 class PhysBody;
 class b2Contact;

@@ -29,6 +29,7 @@ bool Cannon::Awake() {
 	position.y = parameters.attribute("y").as_int();
 	launchAngle = parameters.attribute("launchAngle").as_float();
 	launchPowerIncrease = parameters.attribute("launchPowerIncrease").as_float();
+	launchPowerCap = parameters.attribute("launchPowerCap").as_float();
 	texturePath = parameters.attribute("texturepath").as_string();
 
 	return true;
@@ -48,7 +49,7 @@ bool Cannon::Start() {
 bool Cannon::Update(float dt)
 {
 	if (ball != nullptr) {
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT && launchPower < launchPowerCap) {
 			launchPower += launchPowerIncrease * dt;
 		}
 		else if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
@@ -59,9 +60,13 @@ bool Cannon::Update(float dt)
 		if (canLaunch && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
 			LoadBall();
 		}
+
+		// PELIGRO: CAUSA CRASH
+		//if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+		//	canLaunch = true;
 	}
 
-	app->render->DrawTexture(texture, position.x, position.y);
+	//app->render->DrawTexture(texture, position.x, position.y);
 
 	//if (app->debug)
 	//	app->render->DrawCircle(position.x, position.y, 160, 255, 0, 0);

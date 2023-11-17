@@ -8,7 +8,7 @@
 #include <string.h>
 #include "Log.h"
 
-using namespace std;
+#include "Box2D/Box2D/Box2D.h"
 
 Puntuation::Puntuation() : Module()
 {
@@ -18,8 +18,10 @@ Puntuation::~Puntuation()
 {
 }
 
-bool Puntuation::Init()
+bool Puntuation::Awake(pugi::xml_node& config)
 {
+	SString docPath = config.child("filePath").attribute("path").as_string(); // TODO sin terminar
+	scoreDoc.load_file(docPath.GetString());
 	return true;
 }
 
@@ -39,21 +41,24 @@ bool Puntuation::Start()
 
 bool Puntuation::Update(float dt)	
 {
-	sprintf_s(scoreText, 10, "%d", score);  
-	app->fonts->BlitText(225, 40, textFont, scoreText);
 
 	return true;
 }
 
 bool Puntuation::PostUpdate()
 {
+	scoreText = std::to_string(score).c_str();
+	app->fonts->BlitText(225, 40, textFont, scoreText.GetString());
 	return true;
 }
 
 bool Puntuation::CleanUp()
 {
-	
 	return true;
 }
 
-
+void Puntuation::AddScore(int s)
+{
+	score = s;
+	b2Clamp(score, 0, 99999);
+}

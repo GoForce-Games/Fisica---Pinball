@@ -4,6 +4,7 @@
 #include "App.h"
 #include "Physics.h"
 #include "Textures.h"
+#include "Puntuation.h"
 
 Bumper::Bumper() : Entity(EntityType::BUMPER)
 {
@@ -58,6 +59,6 @@ void Bumper::OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* con
 		impulse.Normalize();
 		otherBody->body->ApplyLinearImpulse(impulse, otherBody->body->GetPosition(), true);
 
-		//TODO implementar suma de puntuación
+		app->puntuation->AddScore(pointValue);
 	}
 }

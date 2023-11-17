@@ -17,7 +17,7 @@ public:
 	// Destructor
 	~Puntuation();   
 	
-	bool Init();
+	bool Awake(pugi::xml_node& config);
 
 	bool Start();
 
@@ -27,13 +27,17 @@ public:
 
 	bool CleanUp();
 
-	int score = 10000;
+	void AddScore(int score);
+
+private:
+
+	int score = 12345;
 	int numeracion;
 
-	int scoreFont2;
 	int textFont = -1;
-	char scoreText[10] = { "\0" };
+	SString scoreText;
 	
+	pugi::xml_document scoreDoc;
   
 };
 

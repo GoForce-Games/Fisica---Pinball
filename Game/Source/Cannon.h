@@ -42,6 +42,7 @@ public:
 	float launchAngle = 0.0f;
 	float launchPower = 0.0f;
 	float launchPowerIncrease = 0.0f;
+	float launchPowerCap = 0.0f;
 
 };
 

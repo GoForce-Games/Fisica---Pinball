@@ -13,9 +13,6 @@
     <ClCompile Include="Source\Main.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Map.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Audio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -52,9 +49,6 @@
     <ClCompile Include="Source\Timer.cpp">
       <Filter>Tools</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Ball.cpp">
-      <Filter>Entities\Collideable</Filter>
-    </ClCompile>
     <ClCompile Include="Source\IntroScreen.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -73,8 +67,18 @@
     <ClCompile Include="Source\Pala.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Bumper.cpp" />
-    <ClCompile Include="Source\Puntuation.cpp" />
+    <ClCompile Include="Source\Map.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bumper.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Puntuation.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Ball.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -152,9 +156,6 @@
     <ClInclude Include="Source\Timer.h">
       <Filter>Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Ball.h">
-      <Filter>Entities\Collideable</Filter>
-    </ClInclude>
     <ClInclude Include="Source\IntroScreen.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -173,8 +174,15 @@
     <ClInclude Include="Source\Pala.h">
       <Filter>Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Bumper.h" />
-    <ClInclude Include="Source\Puntuation.h" />
+    <ClInclude Include="Source\Bumper.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Puntuation.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Ball.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -197,9 +205,6 @@
     </Filter>
     <Filter Include="Tools">
       <UniqueIdentifier>{05374216-4e10-446d-b70d-c17fbd3fa96b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities\Collideable">
-      <UniqueIdentifier>{c13a1f3d-be00-4aeb-ab2d-95978d3fbaf5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Structs">
       <UniqueIdentifier>{485843a0-6487-4beb-ab68-f8b29e235a74}</UniqueIdentifier>

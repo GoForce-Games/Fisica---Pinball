@@ -21,5 +21,11 @@ public:
 
 	void SetPosition(const iPoint& newPos) override;
 
+public:
+
+	int radius;
+
+	SDL_Texture* texture;
+
 };
 

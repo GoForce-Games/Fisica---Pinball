@@ -16,7 +16,7 @@ Ball::~Ball()
 
 bool Ball::Awake()
 {
-	int radius = parameters.attribute("radius").as_int();
+	radius = parameters.attribute("radius").as_int();
 
 	pbody = app->physics->CreateCircle(position.x,position.y, radius, bodyType::DYNAMIC);
 	pbody->boundEntity = this;
@@ -34,9 +34,17 @@ bool Ball::Start()
 
 bool Ball::Update(float dt)
 {
+	//PELIGRO: CAUSA CRASH
+	//if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	//	setToDestroy = true;
+
+	if (pbody == nullptr) return true;
+
 	// Actualiza la posicion de la entidad bola con la posicion de su cuerpo fisico
 	pbody->GetPosition(position.x, position.y);
 
+	//app->render->DrawCircle(position.x, position.y, radius, 255U, 255U, 255U);
+	app->render->DrawTexture(texture, position.x - radius, position.y - radius);
 
 	return true;
 }

@@ -22,7 +22,6 @@ bool Reload::Awake(pugi::xml_node& conf)
 	//moduleList.Add((Module*)app->map);
 	//moduleList.Add((Module*)app->intro);
 	//moduleList.Add((Module*)app->entityManager);
-	ReloadPreset* preset = new ReloadPreset("test", 5, 5);
 	ReloadPreset* presetMap = new ReloadPreset("map", 2, 2);
 	presetMap->AddUnload((Module*)app->intro);
 	presetMap->AddLoad((Module*)app->map);
@@ -31,7 +30,6 @@ bool Reload::Awake(pugi::xml_node& conf)
 	presetMap->AddLoad((Module*)app->physics);
 	presetMap->AddLoad((Module*)app->puntuation);
 
-	presetList.Add(preset);
 	presetList.Add(presetMap);
 
 
@@ -50,9 +48,6 @@ bool Reload::Start()
 
 bool Reload::PostUpdate()
 {
-	//Test, codigo temporal
-	if (activePreset == nullptr && app->input->GetKey(SDL_SCANCODE_R))
-		StartReload("test");
 
 
 	if (activePreset != nullptr) {
