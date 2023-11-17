@@ -31,6 +31,11 @@ bool Reload::Awake(pugi::xml_node& conf)
 	presetMap->AddLoad((Module*)app->puntuation);
 
 	presetList.Add(presetMap);
+
+	ReloadPreset* presetLose = new ReloadPreset("lose", 2, 2);
+	presetLose->AddUnload((Module*)app->lose);
+	presetLose->AddLoad((Module*)app->intro);
+
 	
 	ReloadPreset* gameOver = new ReloadPreset("gameToGameOver", 2, 2);
 	gameOver->AddUnload((Module*)app->map);

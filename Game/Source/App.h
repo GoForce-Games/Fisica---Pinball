@@ -19,6 +19,7 @@ class Scene;
 class EntityManager;
 class Map;
 class IntroScreen;
+class LoseScreen;
 class ModuleFonts;
 class Puntuation;
 class Physics;
@@ -90,6 +91,7 @@ public:
 	EntityManager* entityManager;
 	Map* map;
 	IntroScreen* intro;
+	LoseScreen* lose;
 	ModuleFonts* fonts;
 	Puntuation* puntuation;
 	Physics* physics;

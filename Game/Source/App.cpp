@@ -11,6 +11,7 @@
 #include "Physics.h"
 #include "Reload.h"
 #include "IntroScreen.h"
+#include "LoseScreen.h"
 
 
 #include "Defs.h"
@@ -39,6 +40,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	map = new Map();
 	puntuation = new Puntuation();
 	intro = new IntroScreen();
+	lose = new LoseScreen();
 	fonts = new ModuleFonts();
 	entityManager = new EntityManager();
 	reloader = new Reload();
@@ -57,6 +59,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(scene);
 	AddModule(puntuation);
 	AddModule(intro);
+	AddModule(lose);
 	AddModule(fonts);
 	AddModule(reloader);
 	
