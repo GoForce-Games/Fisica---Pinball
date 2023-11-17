@@ -97,6 +97,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Bumper.cpp" />
     <ClCompile Include="Source\Pala.cpp" />
+    <ClCompile Include="Source\Puntuation.cpp" />
     <ClCompile Include="Source\ReloadPreset.h" />
     <ClCompile Include="Source\Ball.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
@@ -112,7 +113,6 @@
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Cannon.cpp" />
     <ClCompile Include="Source\PinballPieces.cpp" />
-    <ClCompile Include="Source\Puntuation.cpp" />
     <ClCompile Include="Source\Reload.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
