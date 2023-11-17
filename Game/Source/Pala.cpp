@@ -80,7 +80,7 @@ bool Pala::Update(float dt) {
 	app->render->Blit(texture, 115, 525, NULL, 1.0F, -(18*M_PI* angle1));
 	app->render->Blit(texture2, 135, 525, NULL, 1.0F, -(18 * M_PI * angle2));
 
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		if (angle1 > 90) {
 		}
@@ -98,7 +98,7 @@ bool Pala::Update(float dt) {
 			joint1->SetMotorSpeed(10.9f);
 		}
 	}
-	if (app->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		if (angle2> 90) {
 		}
