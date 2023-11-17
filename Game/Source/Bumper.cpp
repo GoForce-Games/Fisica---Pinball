@@ -8,7 +8,7 @@
 
 Bumper::Bumper() : Entity(EntityType::BUMPER)
 {
-	name.Create("Bumper");
+	name.Create("bumper");
 }
 
 Bumper::~Bumper()
@@ -30,7 +30,7 @@ bool Bumper::Awake()
 
 bool Bumper::Start()
 {
-	pbody = app->physics->CreateCircle(position.x, position.y, radius, bodyType::STATIC);
+	pbody = app->physics->CreateCircle(position.x+radius, position.y+radius, radius, bodyType::STATIC);
 	pbody->listener = this;
 
 	texture = app->tex->Load(texturePath.GetString());

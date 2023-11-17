@@ -68,10 +68,3 @@ bool Ball::CleanUp()
 void Ball::OnCollision(PhysBody* physA, PhysBody* physB, b2Contact* contactInfo)
 {
 }
-
-void Ball::SetPosition(const iPoint& newPos)
-{
-	b2Transform t = pbody->body->GetTransform();
-	t.p.Set(PIXEL_TO_METERS(newPos.x), PIXEL_TO_METERS(newPos.y));
-	pbody->body->SetTransform(t.p,t.q.GetAngle());
-}

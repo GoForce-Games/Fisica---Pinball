@@ -323,7 +323,7 @@ bool Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 
     //Iterate over all the tiles and assign the values
     pugi::xml_node tile;
-    int i = 0;
+    uint i = 0;
     for (tile = node.child("data").child("tile"); tile && ret; tile = tile.next_sibling("tile"))
     {
         layer->data[i] = tile.attribute("gid").as_uint();
@@ -354,12 +354,16 @@ bool Map::LoadAllObjects(pugi::xml_node mapNode) {
 
     for (pugi::xml_node objGroupNode = mapNode.child("objectgroup"); objGroupNode && ret; objGroupNode = objGroupNode.next_sibling("objectgroup"))
     {
-        bool propertiesLoaded = true;
-
+        Properties prop;
+        LoadProperties(objGroupNode, prop);
+        
         for (pugi::xml_node objNode = objGroupNode.child("object"); objNode && ret; objNode = objNode.next_sibling("object"))
         {
-
-            if (objNode.child("ellipse")) {
+            Properties::Property* p = prop.GetProperty("Entity");
+            if (p != nullptr) {
+                LoadEntity(objGroupNode, objNode, prop.GetProperty("Entity")->strVal);
+            }
+            else if (objNode.child("ellipse")) {
                 LoadCircle(objGroupNode, objNode);
             }
             else if (objNode.child("polygon")) {
@@ -414,8 +418,14 @@ bool Map::LoadAllPolygons(pugi::xml_node mapNode) {
     return ret;
 }
 
-bool Map::LoadAllEntities(pugi::xml_node mapNode)
+bool Map::LoadEntity(pugi::xml_node objGroupNode, pugi::xml_node objNode, SString entityType)
 {
+    Entity* entity = app->entityManager->CreateEntityByName(entityType.GetString());
+    int x = objNode.attribute("x").as_int();
+    int y = objNode.attribute("y").as_int();
+    iPoint pos; pos.Create(x, y);
+    entity->SetPosition(pos);
+
     return true;
 }
 

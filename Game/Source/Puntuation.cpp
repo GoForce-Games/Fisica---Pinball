@@ -22,14 +22,17 @@ bool Puntuation::Awake(pugi::xml_node& config)
 {
 	SString docPath = config.child("filePath").attribute("path").as_string(); // TODO sin terminar
 	scoreDoc.load_file(docPath.GetString());
+
 	return true;
 }
 
 bool Puntuation::Start()
 {
-	LOG("Loading player textures");
+	LOG("Loading game score...");
 
 	bool ret = true;
+
+	//TODO cargar y guardar puntuaciones
 
 	char lookupTable[] = { "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[ç]^_`abcdefghijklmnopqrstuvwxyz{|}¨+" };
 	textFont = app->fonts->Load("Assets/Fonts/font2.png", lookupTable, 5);

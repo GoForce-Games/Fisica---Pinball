@@ -19,8 +19,6 @@ public:
 
 	void OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* contactInfo) override;
 
-	void SetPosition(const iPoint& newPos) override;
-
 public:
 
 	SString texturePath;

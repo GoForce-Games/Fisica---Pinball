@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Render.h"
 #include "PugiXml/src/pugixml.hpp"
+#include "Physics.h"
 
 class PhysBody;
 class b2Contact;
@@ -79,7 +80,13 @@ public:
 	};
 
 	virtual void SetPosition(const iPoint& newPos) {
-		position.Create(newPos.x, newPos.y);
+		if (pbody == nullptr) {
+			position.Create(newPos.x, newPos.y);
+			return;
+		}
+		b2Transform t = pbody->body->GetTransform();
+		t.p.Set(PIXEL_TO_METERS(newPos.x), PIXEL_TO_METERS(newPos.y));
+		pbody->body->SetTransform(t.p, t.q.GetAngle());
 	}
 
 public:

@@ -114,6 +114,18 @@ Entity* EntityManager::CreateEntity(EntityType type)
 	return entity;
 }
 
+Entity* EntityManager::CreateEntityByName(SString name)
+{
+	EntityType type = EntityType::UNKNOWN;
+
+	if (strcmp(name.GetString(), "bumper") == 0)
+		type = EntityType::BUMPER;
+	else if (strcmp(name.GetString(), "pala") == 0)
+		type = EntityType::PALA;
+
+	return CreateEntity(type);
+}
+
 // Removes the entity from the list and destroys it. Make sure not to have any pointers to it after running this
 void EntityManager::DestroyEntity(Entity* entity)
 {

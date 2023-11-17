@@ -34,6 +34,8 @@ public:
 	// Additional methods
 	Entity* CreateEntity(EntityType type);
 
+	Entity* CreateEntityByName(SString name);
+
 	void DestroyEntity(Entity* entity);
 
 	void RemoveEntity(Entity* entity);

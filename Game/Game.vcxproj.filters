@@ -70,13 +70,13 @@
     <ClCompile Include="Source\Map.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Bumper.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Puntuation.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Source\Ball.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bumper.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
   </ItemGroup>
@@ -174,13 +174,13 @@
     <ClInclude Include="Source\Pala.h">
       <Filter>Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Bumper.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Puntuation.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Ball.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bumper.h">
       <Filter>Entities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -212,5 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\Output\config.xml" />
+    <Xml Include="..\Output\scores.xml" />
   </ItemGroup>
 </Project>
