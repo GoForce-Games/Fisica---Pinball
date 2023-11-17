@@ -40,7 +40,7 @@ bool Puntuation::Start()
 bool Puntuation::Update(float dt)	
 {
 	sprintf_s(scoreText, 10, "%d", score);  
-	app->fonts->BlitText(250, 40, textFont, scoreText);
+	app->fonts->BlitText(225, 40, textFont, scoreText);
 
 	return true;
 }

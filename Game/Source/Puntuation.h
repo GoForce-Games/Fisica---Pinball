@@ -27,7 +27,7 @@ public:
 
 	bool CleanUp();
 
-	int score = 123456789;
+	int score = 10000;
 	int numeracion;
 
 	int scoreFont2;

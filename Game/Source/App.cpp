@@ -37,9 +37,9 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics();
 	scene = new Scene();
 	map = new Map();
+	puntuation = new Puntuation();
 	intro = new IntroScreen();
 	fonts = new ModuleFonts();
-	puntuation = new Puntuation();
 	entityManager = new EntityManager();
 	reloader = new Reload();
 	
@@ -55,9 +55,9 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(entityManager);
 	AddModule(scene);
+	AddModule(puntuation);
 	AddModule(intro);
 	AddModule(fonts);
-	AddModule(puntuation);
 	AddModule(reloader);
 	
 
