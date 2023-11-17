@@ -27,14 +27,12 @@ public:
 
 	bool CleanUp();
 
-
-
-	/*int score;
+	int score = 10000;
 	int numeracion;
 
-	int *scoreFont;
-	int *textFont;
-	char* scoreText = nullptr;*/
+	int scoreFont2;
+	int textFont = -1;
+	char scoreText[10] = { "\0" };
 	
   
 };

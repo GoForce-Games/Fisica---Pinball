@@ -39,11 +39,6 @@ bool Map::Awake(pugi::xml_node& config)
 bool Map::Start() {
     //Calls the functon to load the map, make sure that the filename is assigned
 
-    char lookupTable[] = { "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[ç]^_`abcdefghijklmnopqrstuvwxyz{|}¨+" };
-    textFont = app->fonts->Load("Assets/Fonts/font1.png", lookupTable, 5);
-
-
-
     SString mapPath = path;
     mapPath += name;
     bool ret = Load(mapPath);
@@ -83,8 +78,7 @@ bool Map::Update(float dt)
         mapLayerItem = mapLayerItem->next;
 
     }
-    sprintf_s(scoreText, 10, "%7d", score);
-    app->fonts->BlitText(250, 50, textFont, scoreText);  
+
 
     return true;
 }
