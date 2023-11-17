@@ -5,6 +5,7 @@
 #include "Physics.h"
 #include "Textures.h"
 #include "Puntuation.h"
+#include "Audio.h"
 
 Bumper::Bumper() : Entity(EntityType::BUMPER)
 {
@@ -25,6 +26,8 @@ bool Bumper::Awake()
 	// TODO Unificar el uso de texturas para componentes repetidos
 	texturePath = parameters.attribute("texturepath").as_string();
 
+	bumperSound = app->audio->LoadFx("Assets/Audio/onlymp3.to-Pinball-bumper-hit-sound-effect-0Gg2_yyyQ6w-192k-1700237845.wav");
+
 	return true;
 }
 
@@ -32,6 +35,8 @@ bool Bumper::Start()
 {
 	pbody = app->physics->CreateCircle(position.x+radius, position.y+radius, radius, bodyType::STATIC);
 	pbody->listener = this;
+
+	
 
 	texture = app->tex->Load(texturePath.GetString());
 	return true;
@@ -54,6 +59,7 @@ void Bumper::OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* con
 {
 	Ball* ball = dynamic_cast<Ball*>(otherBody->boundEntity);
 	if (ball) {
+		app->audio->PlayFx(bumperSound);
 		b2Vec2 impulse = otherBody->body->GetPosition();
 		impulse -= pbody->body->GetPosition();
 		impulse.Normalize();
