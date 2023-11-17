@@ -32,6 +32,10 @@ bool Reload::Awake(pugi::xml_node& conf)
 
 	presetList.Add(presetMap);
 
+	ReloadPreset* presetLose = new ReloadPreset("lose", 2, 2);
+	presetLose->AddUnload((Module*)app->lose);
+	presetLose->AddLoad((Module*)app->intro);
+
 
 	return true;
 }

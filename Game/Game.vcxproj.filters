@@ -79,6 +79,7 @@
     <ClCompile Include="Source\Bumper.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Source\LoseScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -183,6 +184,7 @@
     <ClInclude Include="Source\Bumper.h">
       <Filter>Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Source\LoseScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
