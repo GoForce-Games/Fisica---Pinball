@@ -20,11 +20,15 @@ public:
 	void OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* contactInfo) override;
 
 public:
-
 	SString texturePath;
 	SDL_Texture* ballTex = nullptr;
 
 	int radius;
+
+	float accel = 0.2f;
+	
+
+	bool godMode = false;
 
 };
 
