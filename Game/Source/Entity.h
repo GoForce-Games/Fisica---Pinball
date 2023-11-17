@@ -90,7 +90,8 @@ public:
 
 	// Possible properties, it depends on how generic we
 	// want our Entity class, maybe it's not renderable...
-	iPoint position;       
+	iPoint position;
+	iPoint position2;
 	bool renderable = true;
 
 	PhysBody* pbody = nullptr;

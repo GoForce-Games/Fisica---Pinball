@@ -33,7 +33,8 @@ private:
 
 	SDL_Texture* texture;
 	SDL_Texture* texture2;
-	const char* texturePath;
+	const char* texturePath1;
+	const char* texturePath2;
 	PhysBody* pbody;
 
 	float angle1 = 0.0f;

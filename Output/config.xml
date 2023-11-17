@@ -30,6 +30,7 @@
 			<bumper x="160" y ="160" radius="64" texturepath="Assets/Textures/bumper.png" launchPower="2.0f" pointValue="10"/>
 			<cannon x="316" y="560" texturepath="Assets/Textures/player1.png" launchAngle="90.0f" launchPowerIncrease="0.01f"/>
 			<ball radius="4"/>
+			<palas x1="65" x2="172" y1="495" y2="495" texturepath1="Assets/Textures/Pala izquierda.png" texturepath2="Assets/Textures/Pala derecha.png" angle1="0.0f" angle2="0.0f"/>
 		</entitypresets>
 	</entitymanager>
   

@@ -15,12 +15,20 @@
 
 
 Pala::Pala() : Entity(EntityType::PALA) {
-	
+	name.Create("palas");
 }
 
 Pala::~Pala() {}
 
 bool Pala::Awake() {
+	position.x = parameters.attribute("x1").as_int();
+	position.y = parameters.attribute("y1").as_int();
+	position2.x = parameters.attribute("x2").as_int();
+	position2.y = parameters.attribute("y2").as_int();
+	texturePath1 = parameters.attribute("texturepath1").as_string();
+	texturePath2 = parameters.attribute("texturepath2").as_string();
+	angle1 = parameters.attribute("angle1").as_float();
+	angle2 = parameters.attribute("angle2").as_float();
 
 	return true;
 }
@@ -31,12 +39,12 @@ bool Pala::Start() {
 
 	// Set this module as a listener for contacts
 	
-
+	texture = app->tex->Load(texturePath1);
+	texture2 = app->tex->Load(texturePath2);
 
 	//initilize textures
 	//texture = app->tex->Load(texturePath);
-	texture = app->tex->Load("Assets/Textures/Pala derecha.png");
-	texture2 = app->tex->Load("Assets/Textures/Pala izquierda.png");
+	
 
 	PhysBody* pbodyCircle1 = app->physics->CreateCircle(115, 525, 5, bodyType::STATIC);
 	PhysBody* pbodyCircle2 = app->physics->CreateCircle(220, 525, 5, bodyType::STATIC);
@@ -77,12 +85,12 @@ bool Pala::Start() {
 
 bool Pala::Update(float dt) {
 
-	app->render->Blit(texture, 115, 525, NULL, 1.0F, -(18*M_PI* angle1));
-	app->render->Blit(texture2, 135, 525, NULL, 1.0F, -(18 * M_PI * angle2));
+	app->render->DrawTexture(texture, position.x, position.y, NULL, 1.0F, -angle1);
+	app->render->DrawTexture(texture2, position2.x, position2.y, NULL, 1.0F, angle2);
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
-		if (angle1 > 90) {
+		if (angle1 > 57) {
 		}
 		else {
 		angle1 += 19.5f;
@@ -100,7 +108,7 @@ bool Pala::Update(float dt) {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
-		if (angle2> 90) {
+		if (angle2> 57) {
 		}
 		else {
 			angle2 += 19.5f;
