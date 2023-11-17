@@ -22,6 +22,8 @@ bool Ball::Awake()
 	pbody->boundEntity = this;
 	pbody->body->SetBullet(true);
 
+	//position - radius en x y en y
+	//0.0169333333
 	return true;
 }
 
