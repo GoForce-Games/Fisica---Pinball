@@ -41,14 +41,13 @@ bool Puntuation::Start()
 
 bool Puntuation::Update(float dt)	
 {
-
+	scoreText = std::to_string(score).c_str();
+	app->fonts->BlitText(225, 40, textFont, scoreText.GetString());
 	return true;
 }
 
 bool Puntuation::PostUpdate()
 {
-	scoreText = std::to_string(score).c_str();
-	app->fonts->BlitText(225, 40, textFont, scoreText.GetString());
 	return true;
 }
 

@@ -5,6 +5,7 @@
 #include "Physics.h"
 #include "IntroScreen.h"
 #include "ModuleFonts.h"
+#include "Puntuation.h"
 #include <sstream>
 #include <string.h>
 
