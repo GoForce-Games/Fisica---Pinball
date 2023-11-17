@@ -5,6 +5,8 @@
 #include "Defs.h"
 #include "SDL/include/SDL.h"
 #include "Input.h"
+#include "List.h"
+#include "Score.h"
 
 #define MAX_SCORE_LENGTH 10
 
@@ -35,7 +37,7 @@ private:
 	int topScore = 00000;
 	int highScore = 00000;
 
-	
+	List<ScoreStruct> scoreList;
 
 	int textFont = -1;
 	SString scoreText;

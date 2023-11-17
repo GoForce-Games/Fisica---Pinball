@@ -119,6 +119,7 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
+    <ClInclude Include="Source\Score.h" />
     <ClInclude Include="Source\Bumper.h" />
     <ClInclude Include="Source\Pala.h" />
     <ClInclude Include="Source\Ball.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\Cannon.h" />
     <ClInclude Include="Source\PinballPieces.h" />
+    <ClInclude Include="Source\PQueue.h" />
     <ClInclude Include="Source\PropertiesStruct.h" />
     <ClInclude Include="Source\Puntuation.h" />
     <ClInclude Include="Source\Queue.h" />

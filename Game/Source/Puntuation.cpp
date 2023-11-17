@@ -23,6 +23,12 @@ bool Puntuation::Awake(pugi::xml_node& config)
 	SString docPath = config.child("filePath").attribute("path").as_string(); // TODO sin terminar
 	scoreDoc.load_file(docPath.GetString());
 
+	for(pugi::xml_node scoreNode = scoreDoc.child("score"); scoreNode != NULL; scoreNode = scoreNode.next_sibling("score"))
+	{
+		scoreList.Add({scoreNode.attribute("name").as_string(), scoreNode.attribute("value").as_int()});
+	}
+	scoreList.BubbleSort();
+
 	return true;
 }
 
@@ -56,6 +62,9 @@ bool Puntuation::PostUpdate()
 
 bool Puntuation::CleanUp()
 {
+
+
+
 	return true;
 }
 
