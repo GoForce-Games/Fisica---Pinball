@@ -47,6 +47,24 @@ bool Ball::Update(float dt)
 
 	if (pbody == nullptr) return true;
 
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) {
+		godMode = !godMode;
+	}
+	b2Vec2 impulse = b2Vec2_zero;
+	if (godMode) {
+		if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+			impulse = b2Vec2(0.0f, -0.01f);
+			pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
+		}
+		if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+			impulse = b2Vec2(-0.01f, 0.0f);
+			pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
+		}
+		if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+			impulse = b2Vec2(0.01f, 0.0f);
+			pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
+		}
+	}
 	
 	app->render->DrawTexture(ballTex, position.x, position.y);
 	// Actualiza la posicion de la entidad bola con la posicion de su cuerpo fisico
