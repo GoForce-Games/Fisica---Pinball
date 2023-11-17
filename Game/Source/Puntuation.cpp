@@ -32,7 +32,7 @@ bool Puntuation::Start()
 	bool ret = true;
 
 	char lookupTable[] = { "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[ç]^_`abcdefghijklmnopqrstuvwxyz{|}¨+" };
-	textFont = app->fonts->Load("Assets/Fonts/font1.png", lookupTable, 5);
+	textFont = app->fonts->Load("Assets/Fonts/font2.png", lookupTable, 5);
 	
 
 	return ret;

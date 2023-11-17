@@ -90,11 +90,11 @@ bool Pala::Update(float dt) {
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
-		if (angle1 > 57) {
+		if (angle1 > 55) {
 		}
 		else {
-		angle1 += 19.5f;
-		joint1->SetMotorSpeed(-19.5f);
+		angle1 += 12.5f;
+		joint1->SetMotorSpeed(-12.5f);
 	    }
 	}
 	else  
@@ -108,14 +108,14 @@ bool Pala::Update(float dt) {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
-		if (angle2> 57) {
+		if (angle2> 55) {
 		}
 		else {
-			angle2 += 19.5f;
-			joint2->SetMotorSpeed(19.5f);
+			angle2 += 12.5f;
+			joint2->SetMotorSpeed(12.5f);
 		}
 	}
-	else if (joint2->GetJointAngle() > 0.0f * DEGTORAD)
+	else 
 	{
 		if (angle2 < 0) {
 		}

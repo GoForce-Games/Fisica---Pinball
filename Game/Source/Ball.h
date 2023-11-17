@@ -23,9 +23,10 @@ public:
 
 public:
 
-	int radius;
+	SString texturePath;
+	SDL_Texture* ballTex = nullptr;
 
-	SDL_Texture* texture;
+	int radius;
 
 };
 
