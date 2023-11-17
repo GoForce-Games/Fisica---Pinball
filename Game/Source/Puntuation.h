@@ -31,7 +31,7 @@ public:
 
 private:
 
-	int score = 12345;
+	int score = 00000;
 	int topScore = 00000;
 	int highScore = 00000;
 

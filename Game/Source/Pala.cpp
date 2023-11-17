@@ -85,15 +85,14 @@ bool Pala::Start() {
 
 bool Pala::Update(float dt) {
 
-	app->render->DrawTexture(texture, position.x, position.y, NULL, 1.0F, -angle1);
-	app->render->DrawTexture(texture2, position2.x, position2.y, NULL, 1.0F, angle2);
+	angle1 = joint1->GetJointAngle() * RADTODEG-17.0f;
+	angle2 = joint2->GetJointAngle() * RADTODEG+17.0f;
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		if (angle1 > 55) {
 		}
 		else {
-		angle1 += 12.5f;
 		joint1->SetMotorSpeed(-12.5f);
 	    }
 	}
@@ -102,7 +101,6 @@ bool Pala::Update(float dt) {
 		if (angle1 < 0) {
 		}
 		else {
-			angle1 -= 10.9f;
 			joint1->SetMotorSpeed(10.9f);
 		}
 	}
@@ -111,7 +109,6 @@ bool Pala::Update(float dt) {
 		if (angle2> 55) {
 		}
 		else {
-			angle2 += 12.5f;
 			joint2->SetMotorSpeed(12.5f);
 		}
 	}
@@ -120,12 +117,14 @@ bool Pala::Update(float dt) {
 		if (angle2 < 0) {
 		}
 		else {
-			angle2 -= 10.9f;
 			joint2->SetMotorSpeed(-10.9f);
 		}
 
 	}
 	//  Iterate all objects in the world and draw the bodies
+
+	app->render->DrawTexture(texture, position.x, position.y, NULL, 1.0F, angle1);
+	app->render->DrawTexture(texture2, position2.x, position2.y, NULL, 1.0F, angle2);
 	
 	return true;
 }
