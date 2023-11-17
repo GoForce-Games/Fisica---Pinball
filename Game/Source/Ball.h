@@ -21,5 +21,9 @@ public:
 
 	void SetPosition(const iPoint& newPos) override;
 
+public:
+	const char* texturepath;
+	SDL_Texture* ballTex = nullptr;
+
 };
 

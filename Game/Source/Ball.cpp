@@ -2,6 +2,8 @@
 
 #include "App.h"
 #include "Physics.h"
+#include "Textures.h"
+#include "Defs.h"
 
 #include "Box2D/Box2D/Box2D.h"
 
@@ -18,6 +20,10 @@ bool Ball::Awake()
 {
 	int radius = parameters.attribute("radius").as_int();
 
+	texturepath = parameters.attribute("texturepath").as_string();
+	position.x = parameters.attribute("x").as_int();
+	position.y = parameters.attribute("y").as_int();
+
 	pbody = app->physics->CreateCircle(position.x,position.y, radius, bodyType::DYNAMIC);
 	pbody->boundEntity = this;
 	pbody->body->SetBullet(true);
@@ -29,11 +35,14 @@ bool Ball::Awake()
 
 bool Ball::Start()
 {
+	ballTex = app->tex->Load(texturepath);
 	return true;
 }
 
 bool Ball::Update(float dt)
 {
+	
+	app->render->DrawTexture(ballTex, position.x, position.y);
 	// Actualiza la posicion de la entidad bola con la posicion de su cuerpo fisico
 	pbody->GetPosition(position.x, position.y);
 

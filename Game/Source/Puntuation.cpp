@@ -30,7 +30,7 @@ bool Puntuation::Start()
 	bool ret = true;
 
 	char lookupTable[] = { "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[ç]^_`abcdefghijklmnopqrstuvwxyz{|}¨+" };
-	textFont = app->fonts->Load("Assets/Fonts/font1.png", lookupTable, 5);
+	textFont = app->fonts->Load("Assets/Fonts/font2.png", lookupTable, 5);
 	
 
 	return ret;
@@ -40,7 +40,7 @@ bool Puntuation::Start()
 bool Puntuation::Update(float dt)	
 {
 	sprintf_s(scoreText, 10, "%d", score);  
-	app->fonts->BlitText(225, 40, textFont, scoreText);
+	app->fonts->BlitText(228, 40, textFont, scoreText);
 
 	return true;
 }
