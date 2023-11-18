@@ -99,7 +99,7 @@ void Cannon::LoadBall()
 		ball = (Ball*)app->entityManager->CreateEntity(EntityType::BALL);
 		ball->position.x = position.x;
 		ball->position.y = position.y;
-		if (ball->pbody != nullptr) ball->Awake();
+		if (ball->pbody == nullptr) ball->Awake();
 	}
 }
 
