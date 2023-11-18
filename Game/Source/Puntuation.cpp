@@ -11,7 +11,7 @@
 
 #include "Box2D/Box2D/Box2D.h"
 
-Puntuation::Puntuation() : Module()
+Puntuation::Puntuation(bool startEnabled) : Module(startEnabled)
 {
 }
 

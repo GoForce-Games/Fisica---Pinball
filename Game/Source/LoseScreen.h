@@ -8,7 +8,7 @@
 class LoseScreen : public Module
 {
 public:
-	LoseScreen();
+	LoseScreen(bool startEnabled = true);
 	~LoseScreen();
 
 	bool Start();

@@ -9,7 +9,8 @@
 #include "Audio.h"
 
 
-LoseScreen::LoseScreen() {
+LoseScreen::LoseScreen(bool startEnabled) : Module(startEnabled)
+{
 	name.Create("LoseScreen");
 }
 
@@ -35,7 +36,7 @@ bool LoseScreen::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN)
 	{
-		app->reloader->StartReload("lose");
+		app->reloader->StartReload("backToStart");
 	}
 
 	return true;

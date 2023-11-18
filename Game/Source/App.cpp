@@ -30,20 +30,23 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 
 	frames = 0;
 
-	win = new Window();
-	input = new Input();
-	render = new Render();
-	tex = new Textures();
-	audio = new Audio();
-	physics = new Physics();
-	scene = new Scene();
-	map = new Map();
-	puntuation = new Puntuation();
-	lose = new LoseScreen();
-	intro = new IntroScreen();
-	fonts = new ModuleFonts();
-	entityManager = new EntityManager();
-	reloader = new Reload();
+	// Siempre cargado
+	win = new Window(true);
+	input = new Input(true);
+	render = new Render(true);
+	tex = new Textures(true);
+	fonts = new ModuleFonts(true);
+	audio = new Audio(true);
+	reloader = new Reload(true);
+	physics = new Physics(true);
+
+	//Cargado según el estado de juego
+	scene = new Scene(false);
+	map = new Map(false);
+	puntuation = new Puntuation(false);
+	lose = new LoseScreen(false);
+	intro = new IntroScreen(true); // Game entry point
+	entityManager = new EntityManager(false);
 	
 
 
@@ -117,8 +120,10 @@ bool App::Awake()
 			// If the section with the module name exists in config.xml, fill the pointer with the valid xml_node
 			// that can be used to read all variables for that module.
 			// Send nullptr if the node does not exist in config.xml
-			pugi::xml_node node = configNode.child(item->data->name.GetString());
-			ret = item->data->Awake(node);
+			if (item->data->active) {
+				pugi::xml_node node = configNode.child(item->data->name.GetString());
+				ret = item->data->Awake(node);
+			}
 			item = item->next;
 		}
 	}
@@ -139,7 +144,8 @@ bool App::Start()
 
 	while(item != NULL && ret == true)
 	{
-		ret = item->data->Start();
+		if (item->data->active)
+			ret = item->data->Start();
 		item = item->next;
 	}
 

@@ -63,6 +63,7 @@ void Bumper::OnCollision(PhysBody* thisBody, PhysBody* otherBody, b2Contact* con
 		b2Vec2 impulse = otherBody->body->GetPosition();
 		impulse -= pbody->body->GetPosition();
 		impulse.Normalize();
+		impulse *= launchPower;
 		otherBody->body->ApplyLinearImpulse(impulse, otherBody->body->GetPosition(), true);
 
 		app->puntuation->AddScore(pointValue);

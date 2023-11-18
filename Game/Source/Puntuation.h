@@ -14,7 +14,7 @@ class Puntuation : public Module
 {
 public:
 	// Constructor
-	Puntuation();    
+	Puntuation(bool startEnabled = true);    
 
 	// Destructor
 	~Puntuation();   

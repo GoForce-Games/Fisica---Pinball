@@ -11,7 +11,7 @@
 #include "Log.h"
 #include "Bumper.h"
 
-Scene::Scene() : Module()
+Scene::Scene(bool startEnabled) : Module(startEnabled)
 {
 	name.Create("scene");
 }
@@ -68,7 +68,7 @@ bool Scene::Start()
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
 
-	
+	app->audio->PlayMusic("Assets/Audio/Music/musicaFondo.ogg");
 
 	return true;
 }

@@ -12,7 +12,7 @@
 
 #include<string.h>
 
-ModuleFonts::ModuleFonts() : Module()
+ModuleFonts::ModuleFonts(bool startEnabled) : Module(startEnabled)
 {
 
 }

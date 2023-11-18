@@ -8,7 +8,7 @@
 class IntroScreen : public Module
 {
 public:
-	IntroScreen();
+	IntroScreen(bool startEnabled = true);
 	~IntroScreen();
 
 	bool Start();

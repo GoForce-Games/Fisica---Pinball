@@ -15,7 +15,7 @@ enum ReloadStep {
 class Reload : public Module
 {
 public:
-    Reload();
+    Reload(bool startEnabled = true);
 
     // Destructor
     virtual ~Reload();

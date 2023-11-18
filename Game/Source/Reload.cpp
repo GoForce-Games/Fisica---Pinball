@@ -4,7 +4,7 @@
 #include "Box2D/Box2D/Box2D.h"
 #include "Log.h"
 
-Reload::Reload() {
+Reload::Reload(bool startEnabled) : Module(startEnabled) {
 
 }
 
@@ -22,28 +22,29 @@ bool Reload::Awake(pugi::xml_node& conf)
 	//moduleList.Add((Module*)app->map);
 	//moduleList.Add((Module*)app->intro);
 	//moduleList.Add((Module*)app->entityManager);
-	ReloadPreset* presetMap = new ReloadPreset("map", 2, 2);
+	ReloadPreset* presetMap = new ReloadPreset("map", 2, 2); // Para escena de inicio y asegura que los módulos necesarios están activos
 	presetMap->AddUnload((Module*)app->intro);
-	presetMap->AddLoad((Module*)app->map);
-	presetMap->AddLoad((Module*)app->scene);
-	presetMap->AddLoad((Module*)app->entityManager);
 	presetMap->AddLoad((Module*)app->physics);
+	presetMap->AddLoad((Module*)app->map);
+	presetMap->AddLoad((Module*)app->entityManager);
+	presetMap->AddLoad((Module*)app->scene);
 	presetMap->AddLoad((Module*)app->puntuation);
 
 	presetList.Add(presetMap);
+	
+	ReloadPreset* gameOver = new ReloadPreset("gameToGameOver", 2, 2); // Para los módulos de juego (menos puntuacion) y muestra escena de Game Over
+	gameOver->AddUnload((Module*)app->physics);
+	gameOver->AddUnload((Module*)app->map);
+	gameOver->AddUnload((Module*)app->entityManager);
+	gameOver->AddUnload((Module*)app->scene);
+	gameOver->AddLoad((Module*)app->lose);
 
-	ReloadPreset* presetLose = new ReloadPreset("lose", 2, 2);
+	presetList.Add(gameOver);
+
+	ReloadPreset* presetLose = new ReloadPreset("backToStart", 2, 2); // Vuelve a la pantalla de inicio
 	presetLose->AddUnload((Module*)app->lose);
 	presetLose->AddLoad((Module*)app->intro);
 
-	
-	ReloadPreset* gameOver = new ReloadPreset("gameToGameOver", 2, 2);
-	gameOver->AddUnload((Module*)app->map);
-	gameOver->AddUnload((Module*)app->scene);
-	gameOver->AddUnload((Module*)app->entityManager);
-	gameOver->AddUnload((Module*)app->physics);
-
-	presetList.Add(gameOver);
 
 	return true;
 }
@@ -151,7 +152,7 @@ void Reload::ReloadModules()
 	// Algunos modulos requieren recargar la configuración al reiniciarse
 	for (ListItem<Module*>* item = activePreset->load.start; item != nullptr; item = item->next)
 	{
-		if (item->data != nullptr && item->data->needsAwaking && !item->data->awoken) {
+		if (item->data != nullptr && !item->data->awoken) {
 			pugi::xml_node config = app->GetConfig(*(item->data));
 			item->data->Awake(config);
 		}

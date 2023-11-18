@@ -66,9 +66,9 @@ bool Ball::Update(float dt)
 		}
 	}
 	
+	pbody->GetPosition(position.x, position.y);
 	app->render->DrawTexture(ballTex, position.x, position.y);
 	// Actualiza la posicion de la entidad bola con la posicion de su cuerpo fisico
-	pbody->GetPosition(position.x, position.y);
 
 
 	return true;

@@ -9,7 +9,7 @@
 #include "Audio.h"
 
 
-IntroScreen::IntroScreen() {
+IntroScreen::IntroScreen(bool startEnabled) : Module(startEnabled) {
 	name.Create("IntroScreen");
 }
 
@@ -35,7 +35,6 @@ bool IntroScreen::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_SPACE))
 	{		
 		app->reloader->StartReload("map");
-		app->audio->PlayMusic("Assets/Audio/Music/musicaFondo.ogg");
 	}
 
 	return true;

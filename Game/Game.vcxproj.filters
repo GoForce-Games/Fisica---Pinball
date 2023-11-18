@@ -79,7 +79,9 @@
     <ClCompile Include="Source\Bumper.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Source\LoseScreen.cpp" />
+    <ClCompile Include="Source\LoseScreen.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -190,7 +192,9 @@
     <ClInclude Include="Source\Score.h">
       <Filter>Structs</Filter>
     </ClInclude>
-    <ClInclude Include="Source\LoseScreen.h" />
+    <ClInclude Include="Source\LoseScreen.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
