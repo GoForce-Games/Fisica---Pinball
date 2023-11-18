@@ -24,7 +24,7 @@ bool LoseScreen::Start()
 
 	bool ret = true;
 
-	//LoseTexture = app->tex->Load("Assets/Textures/GoForceGames.png");
+	LoseTexture = app->tex->Load("Assets/Textures/Wasted.png");
 
 	return ret;
 }
@@ -33,7 +33,7 @@ bool LoseScreen::Update(float dt)
 {
 	app->render->DrawTexture(LoseTexture, 0, 0, NULL);
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE))
+	if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN)
 	{
 		app->reloader->StartReload("lose");
 	}
