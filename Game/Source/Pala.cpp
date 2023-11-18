@@ -50,7 +50,7 @@ bool Pala::Start() {
 
 	PhysBody* pbodyCircle1 = app->physics->CreateCircle(115, 525, 5, bodyType::STATIC);
 	PhysBody* pbodyCircle2 = app->physics->CreateCircle(220, 525, 5, bodyType::STATIC);
-	PhysBody* pbodyRect1 = app->physics->CreateRectangle(135, 505, 45, 10, bodyType::DYNAMIC);
+	PhysBody* pbodyRect1 = app->physics->CreateRectangle(135, 535, 45, 10, bodyType::DYNAMIC);
 	PhysBody* pbodyRect2 = app->physics->CreateRectangle(200, 535, 45, 10, bodyType::DYNAMIC);
 
 	ball1 = pbodyCircle1->body;
@@ -90,10 +90,10 @@ bool Pala::Update(float dt) {
 	angle1 = joint1->GetJointAngle() * RADTODEG-17.0f;
 	angle2 = joint2->GetJointAngle() * RADTODEG+17.0f;
 
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+	/*if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
 	{
 		app->audio->PlayFx(palaFx);
-	}
+	}*/
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
@@ -105,7 +105,7 @@ bool Pala::Update(float dt) {
 	}
 	else  
 	{
-		if (angle1 < 0) {
+		if (angle1 > 0) {
 		}
 		else {
 			joint1->SetMotorSpeed(10.9f);
@@ -113,7 +113,7 @@ bool Pala::Update(float dt) {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
-		if (angle2> 55) {
+		if (angle2 > 55) {
 		}
 		else {
 			joint2->SetMotorSpeed(12.5f);
