@@ -40,100 +40,10 @@ bool Physics::Start()
 	// Set this module as a listener for contacts
 	world->SetContactListener(this);
 
-	/*b2BodyDef bd;
-	circle = world->CreateBody(&bd);
-	int xball1 = 350 / 3.0;
-	int yball1 = 640 / 1.205f;
-	int diameterball1 = 30 / 2;
-	b2BodyDef bodyball1;
-	bodyball1.type = b2_staticBody;
-	bodyball1.position.Set(PIXEL_TO_METERS(xball1), PIXEL_TO_METERS(yball1));
-	b2Body* ball1 = world->CreateBody(&bodyball1);
-	b2CircleShape shapeball1;
-	shapeball1.m_radius = PIXEL_TO_METERS(diameterball1) * 0.5f;
-	b2FixtureDef fixtureball1;
-	fixtureball1.shape = &shapeball1;
-	ball1->CreateFixture(&fixtureball1);
 
-	int xball2 = 350 / 1.55;
-	int yball2 = 640 / 1.205f;
-	int diameterball2 = 30 / 2;
-	b2BodyDef bodyball2;
-	bodyball2.type = b2_staticBody;
-	bodyball2.position.Set(PIXEL_TO_METERS(xball2), PIXEL_TO_METERS(yball2));
-	b2Body* ball2 = world->CreateBody(&bodyball2);
-	b2CircleShape shapeball2;
-	shapeball2.m_radius = PIXEL_TO_METERS(diameterball2) * 0.5f;
-	b2FixtureDef fixtureball2;
-	fixtureball2.shape = &shapeball2;
-	ball2->CreateFixture(&fixtureball2);*/
+	b2BodyDef bd;
+	ground = world->CreateBody(&bd);
 	
-
-	/*int xball1 = 120;
-	int yball1 = 640 / 1.205f;
-	b2BodyDef ballBodyDef;
-	ballBodyDef.type = b2_staticBody;
-	ballBodyDef.position.Set(PIXEL_TO_METERS(xball1), PIXEL_TO_METERS(yball1));
-	ball = world->CreateBody(&ballBodyDef);
-	b2CircleShape ballShape;
-	ballShape.m_radius = PIXEL_TO_METERS(10);
-	b2FixtureDef ballFixture;
-	ballFixture.shape = &ballShape;
-	ball->CreateFixture(&ballFixture);
-
-	b2BodyDef armBodyDef;
-	armBodyDef.type = b2_dynamicBody;
-	armBodyDef.position.Set(PIXEL_TO_METERS(150), PIXEL_TO_METERS(530));
-	arm = world->CreateBody(&armBodyDef);
-	b2PolygonShape armShape;
-	armShape.SetAsBox(PIXEL_TO_METERS(50) * 0.5f, PIXEL_TO_METERS(15) * 0.5f);
-	b2FixtureDef armFixture;
-	armFixture.shape = &armShape;
-	armFixture.density = 1.0f;
-	arm->CreateFixture(&armFixture);
-
-	b2RevoluteJointDef jointDef;
-	jointDef.bodyA = ball;
-	jointDef.bodyB = arm;
-	jointDef.localAnchorA.Set(PIXEL_TO_METERS(15), 0);
-	jointDef.localAnchorB.Set(0, 0);
-	jointDef.collideConnected = false;
-	joint = (b2RevoluteJoint*)world->CreateJoint(&jointDef);
-
-
-
-
-	int xball2 = 215;
-	int yball2 = 640 / 1.205f;
-	b2BodyDef ballBodyDef2;
-	ballBodyDef2.type = b2_staticBody;
-	ballBodyDef2.position.Set(PIXEL_TO_METERS(xball2), PIXEL_TO_METERS(yball2));
-	ball2 = world->CreateBody(&ballBodyDef2);
-	b2CircleShape ballShape2;
-	ballShape2.m_radius = PIXEL_TO_METERS(10);
-	b2FixtureDef ballFixture2;
-	ballFixture2.shape = &ballShape2;
-	ball2->CreateFixture(&ballFixture2);
-
-	b2BodyDef armBodyDef2;
-	armBodyDef2.type = b2_dynamicBody;
-	armBodyDef2.position.Set(PIXEL_TO_METERS(170), PIXEL_TO_METERS(530));
-	armBodyDef2.angle = b2_pi;
-	arm2 = world->CreateBody(&armBodyDef);
-	b2PolygonShape armShape2;
-	armShape2.SetAsBox(PIXEL_TO_METERS(50) * 0.5f, PIXEL_TO_METERS(15) * 0.5f);
-	b2FixtureDef armFixture2;
-	armFixture2.shape = &armShape2;
-	armFixture2.density = 1.0f;
-	arm2->CreateFixture(&armFixture2);
-
-	b2RevoluteJointDef jointDef2;
-	jointDef2.bodyA = ball2;
-	jointDef2.bodyB = arm2;
-	jointDef2.localAnchorA.Set(PIXEL_TO_METERS(-15), 0);
-	jointDef2.localAnchorB.Set(0, 0);
-	jointDef2.collideConnected = false;
-	joint = (b2RevoluteJoint*)world->CreateJoint(&jointDef2);*/
 	
 
 	return true;
@@ -413,11 +323,56 @@ bool Physics::PostUpdate()
 				}
 				break;
 				}
+				if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
+				{
+					int mouse_x, mouse_y;
+					app->input->GetMousePosition(mouse_x, mouse_y);
+					b2Vec2 p = { PIXEL_TO_METERS(mouse_x), PIXEL_TO_METERS(mouse_y) };
+					if (f->GetShape()->TestPoint(b->GetTransform(), p) == true)
+					{
 
+
+						mouse_body = b;
+
+
+						b2Vec2 mousePosition;
+						mousePosition.x = p.x;
+						mousePosition.y = p.y;
+
+
+						b2MouseJointDef def;
+						def.bodyA = ground;
+						def.bodyB = mouse_body;
+						def.target = mousePosition;
+						def.dampingRatio = 0.5f;
+						def.frequencyHz = 2.0f;
+						def.maxForce = 200.0f * mouse_body->GetMass();
+
+
+						mouse_joint = (b2MouseJoint*)world->CreateJoint(&def);
+					}
+				}
 			}
 		}
 	}
+	if (mouse_body != nullptr && mouse_joint != nullptr) {
+		int mouse_x, mouse_y;
+		app->input->GetMousePosition(mouse_x, mouse_y);
+		if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT) {
+			b2Vec2 mousePosition;
+			mousePosition = PIXEL_TO_METERS(b2Vec2(mouse_x, mouse_y));
+			mouse_joint->SetTarget(mousePosition);
 
+		}
+	}
+
+	if (mouse_body != nullptr && mouse_joint != nullptr) {
+		if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_UP) {
+			app->physics->world->DestroyJoint(mouse_joint);
+			mouse_joint = nullptr;
+			mouse_body = nullptr;
+		}
+	}
 
 	return ret;
 }

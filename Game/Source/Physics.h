@@ -97,10 +97,9 @@ private:
 	float angle2 = 0.0f;
 	// Box2D World
 	
-	b2Body* ball;
-	b2Body* arm;
-	b2RevoluteJoint* joint;
-	b2Body* ball2;
-	b2Body* arm2;
-	b2RevoluteJoint* joint2;
+	b2Body* ground;
+
+	// Mouse joint
+	b2MouseJoint* mouse_joint;
+	b2Body* mouse_body;
 };
