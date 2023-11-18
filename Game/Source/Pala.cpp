@@ -30,6 +30,8 @@ bool Pala::Awake() {
 	angle1 = parameters.attribute("angle1").as_float();
 	angle2 = parameters.attribute("angle2").as_float();
 
+	palaFx = app->audio->LoadFx("Assets/Audio/Fx/pala.wav");
+
 	return true;
 }
 
@@ -87,6 +89,11 @@ bool Pala::Update(float dt) {
 
 	angle1 = joint1->GetJointAngle() * RADTODEG-17.0f;
 	angle2 = joint2->GetJointAngle() * RADTODEG+17.0f;
+
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+	{
+		app->audio->PlayFx(palaFx);
+	}
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{

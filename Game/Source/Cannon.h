@@ -44,6 +44,8 @@ public:
 	float launchPowerIncrease = 0.0f;
 	float launchPowerCap = 0.0f;
 
+private:
+	int canonFx;
 };
 
 #endif // __CANNON_H__

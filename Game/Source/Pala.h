@@ -31,6 +31,8 @@ public:
 
 private:
 
+	int palaFx;
+
 	SDL_Texture* texture;
 	SDL_Texture* texture2;
 	const char* texturePath1;

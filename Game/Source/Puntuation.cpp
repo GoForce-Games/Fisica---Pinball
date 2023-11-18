@@ -1,5 +1,6 @@
 #include "Puntuation.h"
 #include "App.h"
+#include "Audio.h"
 #include "Textures.h"
 #include "ModuleFonts.h"
 #include <stdio.h>
@@ -27,7 +28,9 @@ bool Puntuation::Awake(pugi::xml_node& config)
 	{
 		scoreList.Add({scoreNode.attribute("name").as_string(), scoreNode.attribute("value").as_int()});
 	}
-	scoreList.BubbleSort();
+	//scoreList.BubbleSort();
+
+	scoreFx = app->audio->LoadFx("Assets/Audio/Fx/score.wav");
 
 	return true;
 }
@@ -72,4 +75,5 @@ void Puntuation::AddScore(int s)
 {
 	score += s;
 	b2Clamp(score, 0, 99999);
+	app->audio->PlayFx(scoreFx);
 }

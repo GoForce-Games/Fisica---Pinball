@@ -26,7 +26,7 @@ bool Bumper::Awake()
 	// TODO Unificar el uso de texturas para componentes repetidos
 	texturePath = parameters.attribute("texturepath").as_string();
 
-	bumperSound = app->audio->LoadFx("Assets/Audio/onlymp3.to-Pinball-bumper-hit-sound-effect-0Gg2_yyyQ6w-192k-1700237845.wav");
+	bumperSound = app->audio->LoadFx("Assets/Audio/Fx/onlymp3.to-Pinball-bumper-hit-sound-effect-0Gg2_yyyQ6w-192k-1700237845.wav");
 
 	return true;
 }

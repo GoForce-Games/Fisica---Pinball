@@ -32,6 +32,8 @@ bool Cannon::Awake() {
 	launchPowerCap = parameters.attribute("launchPowerCap").as_float();
 	texturePath = parameters.attribute("texturepath").as_string();
 
+	canonFx = app->audio->LoadFx("Assets/Audio/Fx/canon.wav");
+
 	return true;
 }
 
@@ -54,6 +56,7 @@ bool Cannon::Update(float dt)
 		}
 		else if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
 			LaunchBall();
+			app->audio->PlayFx(canonFx);
 		}
 	}
 	else {

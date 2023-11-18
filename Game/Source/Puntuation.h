@@ -41,6 +41,7 @@ private:
 
 	int textFont = -1;
 	SString scoreText;
+	int scoreFx;
 	
 	pugi::xml_document scoreDoc;
   
