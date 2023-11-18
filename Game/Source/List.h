@@ -229,7 +229,7 @@ public:
 	}
 
 	// Sort
-	/*int BubbleSort()
+	int BubbleSort()
 	{
 		int ret = 0;
 		bool swapped = true;
@@ -253,7 +253,7 @@ public:
 		}
 
 		return ret;
-	}*/
+	}
 
 	int Find(const tdata& data)
 	{

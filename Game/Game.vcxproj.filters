@@ -189,7 +189,7 @@
     <ClInclude Include="Source\PQueue.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Score.h">
+    <ClInclude Include="Source\ScoreStruct.h">
       <Filter>Structs</Filter>
     </ClInclude>
     <ClInclude Include="Source\LoseScreen.h">

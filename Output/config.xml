@@ -25,6 +25,8 @@
     <map path="Assets/Maps/" name="Pinball.tmx"/>
   </scene>
 
+	<scoreModule path="scores.xml"/>
+
 	<entitymanager>
 		<entitypresets>
 			<bumper x="160" y ="160" radius="32" texturepath="Assets/Textures/bumper.png" launchPower="0.4f" pointValue="100"/>

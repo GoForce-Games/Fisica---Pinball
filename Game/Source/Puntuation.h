@@ -6,7 +6,7 @@
 #include "SDL/include/SDL.h"
 #include "Input.h"
 #include "List.h"
-#include "Score.h"
+#include "ScoreStruct.h"
 
 #define MAX_SCORE_LENGTH 10
 
@@ -31,19 +31,25 @@ public:
 
 	void AddScore(int score);
 
+	void SortScore();
+
+	void SaveScore();
+
 private:
 
-	int score = 00000;
-	int topScore = 00000;
-	int highScore = 00000;
+	ScoreStruct* score = nullptr;
+	ScoreStruct* topScore = nullptr;
+	ScoreStruct* highScore = nullptr;
 
-	List<ScoreStruct> scoreList;
+	List<ScoreStruct*> scoreList;
 
 	int textFont = -1;
 	SString scoreText;
 	int scoreFx;
 	
+	SString filePath;
 	pugi::xml_document scoreDoc;
+	pugi::xml_node scoreRootNode;
   
 };
 
