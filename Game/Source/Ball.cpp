@@ -65,6 +65,10 @@ bool Ball::Update(float dt)
 			pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 		}
 	}
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+		impulse = b2Vec2(0.0f, -0.3f);
+		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
+	}
 	
 	pbody->GetPosition(position.x, position.y);
 	app->render->DrawTexture(ballTex, position.x, position.y);
