@@ -95,6 +95,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\DeathCollision.cpp" />
     <ClCompile Include="Source\Bumper.cpp" />
     <ClCompile Include="Source\LoseScreen.cpp" />
     <ClCompile Include="Source\Pala.cpp" />
@@ -120,6 +121,7 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
+    <ClInclude Include="Source\DeathCollision.h" />
     <ClInclude Include="Source\ScoreStruct.h" />
     <ClInclude Include="Source\Bumper.h" />
     <ClInclude Include="Source\LoseScreen.h" />

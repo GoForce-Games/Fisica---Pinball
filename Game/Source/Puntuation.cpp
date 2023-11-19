@@ -121,7 +121,7 @@ void Puntuation::SaveScore()
 	SortScore();
 
 
-	for (ListItem<ScoreStruct*>* item = scoreList.end; item; item = item->prev)
+	for (ListItem<ScoreStruct*>* item = scoreList.end; item && item->data; item = item->prev)
 	{
 		pugi::xml_node scoreNode = scoreRootNode.append_child("score");
 		scoreNode.append_attribute("name").set_value(item->data->name.GetString());

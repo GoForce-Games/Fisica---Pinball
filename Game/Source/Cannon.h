@@ -28,6 +28,9 @@ public:
 
 	void LoadBall();
 
+	// Part of a workaround for a reload bug
+	bool ForceLoadBall();
+
 	void LaunchBall();
 
 public:
@@ -37,6 +40,7 @@ public:
 	PhysBody* pbody;
 
 	Ball* ball;
+	Ball* ballLink; //Used to keep a reference to the ball across games
 	bool canLaunch = true;
 
 	float launchAngle = 0.0f;

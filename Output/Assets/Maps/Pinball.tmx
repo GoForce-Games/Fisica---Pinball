@@ -235,7 +235,6 @@
  </layer>
  <objectgroup id="2" name="Bumpers">
   <properties>
-   <property name="bool Muerte" type="bool" value="false"/>
    <property name="bool Rebote" type="bool" value="true"/>
    <property name="string Entity" value="bumper"/>
   </properties>
@@ -252,7 +251,6 @@
  <objectgroup id="3" name="Paredes" opacity="0.9">
   <properties>
    <property name="bool Collider" type="bool" value="true"/>
-   <property name="bool Muerte" type="bool" value="false"/>
   </properties>
   <object id="22" x="66.1818" y="413.636">
    <polygon points="0,0 -0.181818,46.7273 7.27273,53.6364 30.9091,67.6364 37.4545,67.8182 41.4545,65.2727 41.0909,59.4545 13.2727,-1.45455 10,-4.54545 2.54545,-4.36364 0,-1.63636"/>
@@ -288,7 +286,7 @@
  </objectgroup>
  <objectgroup id="5" name="Muerte">
   <properties>
-   <property name="bool Muerte" type="bool" value="true"/>
+   <property name="string Entity" value="defeat"/>
   </properties>
   <object id="57" x="37.3333" y="536">
    <polygon points="0,0 -0.25,40.75 6.5,46.75 264.75,46.5 264.75,5 153.805,38.1007 121.758,37.9289"/>

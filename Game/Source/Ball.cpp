@@ -27,6 +27,7 @@ bool Ball::Awake()
 	pbody = app->physics->CreateCircle(position.x,position.y, radius, bodyType::DYNAMIC);
 	pbody->boundEntity = this;
 	pbody->body->SetBullet(true);
+	pbody->listener = this;
 
 	//position - radius en x y en y
 	//0.0169333333
@@ -66,7 +67,7 @@ bool Ball::Update(float dt)
 		}
 	}
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
-		impulse = b2Vec2(0.0f, -0.3f);
+		impulse = b2Vec2(0.0f, -0.05f);
 		pbody->body->ApplyLinearImpulse(impulse, pbody->body->GetWorldCenter(), true);
 	}
 	

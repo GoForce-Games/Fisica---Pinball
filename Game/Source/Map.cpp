@@ -421,7 +421,8 @@ bool Map::LoadAllPolygons(pugi::xml_node mapNode) {
 
 bool Map::LoadEntity(pugi::xml_node objGroupNode, pugi::xml_node objNode, SString entityType)
 {
-    Entity* entity = app->entityManager->CreateEntityByName(entityType.GetString());
+    Entity* entity = app->entityManager->CreateEntityFromMapData(entityType.GetString(), objNode);
+    // TODO change all past this line until return to be in each of the entities instead (custom initialization)
     int x = objNode.attribute("x").as_int();
     int y = objNode.attribute("y").as_int();
     iPoint pos; pos.Create(x, y);

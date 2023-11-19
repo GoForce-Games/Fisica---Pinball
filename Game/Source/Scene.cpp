@@ -36,15 +36,15 @@ bool Scene::Awake(pugi::xml_node& config)
 	// Check https://pugixml.org/docs/quickstart.html#access
 	for (pugi::xml_node bumperNode = config.child("bumper"); bumperNode; bumperNode = bumperNode.next_sibling("bumper"))
 	{
-		Bumper* bumper = (Bumper*)app->entityManager->CreateEntity(EntityType::BUMPER);
+		Bumper* bumper = (Bumper*)app->entityManager->CreateEntity(EntityType::BUMPER, bumperNode);
 		bumper->parameters = bumperNode;
 		bumper->CleanUp();
 		bumper->Awake();
 	}
 
-	player = (Cannon*)app->entityManager->CreateEntity(EntityType::CANNON);
+	player = (Cannon*)app->entityManager->CreateEntity(EntityType::CANNON, pugi::xml_node());
 
-	app->entityManager->CreateEntity(EntityType::PALA);
+	app->entityManager->CreateEntity(EntityType::PALA, pugi::xml_node());
 
 
 	return ret;

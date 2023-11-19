@@ -41,12 +41,12 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics(true);
 
 	//Cargado según el estado de juego
-	scene = new Scene(false);
-	map = new Map(false);
-	puntuation = new Puntuation(false);
+	scene = new Scene(true);
+	map = new Map(true);
+	puntuation = new Puntuation(true);
 	lose = new LoseScreen(false);
 	intro = new IntroScreen(true); // Game entry point
-	entityManager = new EntityManager(false);
+	entityManager = new EntityManager(true);
 	
 
 

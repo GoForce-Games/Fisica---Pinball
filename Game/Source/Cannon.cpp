@@ -6,6 +6,7 @@
 #include "Render.h"
 #include "Scene.h"
 #include "Physics.h"
+#include "Reload.h"
 
 #include "Ball.h"
 
@@ -50,6 +51,10 @@ bool Cannon::Start() {
 
 bool Cannon::Update(float dt)
 {
+	if (app->reloader->activePreset != nullptr && ForceLoadBall()) {
+		launchPower = 0.0f;
+		LaunchBall();
+	}
 	if (ball != nullptr) {
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT && launchPower < launchPowerCap) {
 			launchPower += launchPowerIncrease * dt;
@@ -79,6 +84,9 @@ bool Cannon::Update(float dt)
 
 bool Cannon::CleanUp()
 {
+	pbody->setToDestroy = true;
+	pbody->boundEntity = nullptr;
+	setToDestroy = true; //Asegura la eliminacion por parte del gestor de entidades
 
 	return true;
 }
@@ -96,11 +104,27 @@ void Cannon::OnCollision(PhysBody* physA, PhysBody* physB, b2Contact* contactInf
 void Cannon::LoadBall()
 {
 	if (canLaunch && ball == nullptr) {
-		ball = (Ball*)app->entityManager->CreateEntity(EntityType::BALL);
+		ball = (Ball*)app->entityManager->CreateEntity(EntityType::BALL, pugi::xml_node());
 		ball->position.x = position.x;
 		ball->position.y = position.y;
 		if (ball->pbody == nullptr) ball->Awake();
+
+		ballLink = ball;
 	}
+}
+
+bool Cannon::ForceLoadBall()
+{
+	bool ret = false;
+
+	if (ballLink != nullptr) {
+		ret = true;
+		ball = ballLink;
+		canLaunch = true;
+		LoadBall();
+	}
+
+	return ret;
 }
 
 void Cannon::LaunchBall()

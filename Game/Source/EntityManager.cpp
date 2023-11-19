@@ -3,12 +3,16 @@
 #include "App.h"
 #include "Textures.h"
 #include "Scene.h"
+//These two are temporary
+#include "IntroScreen.h"
+#include "LoseScreen.h"
 
 #include "Cannon.h"
 #include "Item.h"
 #include "Ball.h"
 #include "Bumper.h"
 #include "Pala.h"
+#include "DeathCollision.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -87,17 +91,18 @@ bool EntityManager::CleanUp()
 	return ret;
 }
 
-Entity* EntityManager::CreateEntity(EntityType type)
+Entity* EntityManager::CreateEntity(EntityType type, pugi::xml_node objectData)
 {
 	Entity* entity = nullptr; 
 
 	switch (type)
 	{
-	case EntityType::CANNON:	entity = new Cannon(); break;
-	case EntityType::ITEM:		entity = new Item(); break;
-	case EntityType::BALL:		entity = new Ball(); break;
-	case EntityType::BUMPER:	entity = new Bumper(); break;
-	case EntityType::PALA:       entity = new Pala(); break;
+	case EntityType::CANNON:			entity = new Cannon(); break;
+	case EntityType::ITEM:				entity = new Item(); break;
+	case EntityType::BALL:				entity = new Ball(); break;
+	case EntityType::BUMPER:			entity = new Bumper(); break;
+	case EntityType::PALA:				entity = new Pala(); break;
+	case EntityType::LOSE_CONDITION:	entity = new DeathCollision(objectData);
 	default:
 		break;
 	}
@@ -114,16 +119,18 @@ Entity* EntityManager::CreateEntity(EntityType type)
 	return entity;
 }
 
-Entity* EntityManager::CreateEntityByName(SString name)
+Entity* EntityManager::CreateEntityFromMapData(SString name, pugi::xml_node objectData)
 {
-	EntityType type = EntityType::UNKNOWN;
+	Entity* entity = nullptr;
 
 	if (strcmp(name.GetString(), "bumper") == 0)
-		type = EntityType::BUMPER;
+		entity = CreateEntity(EntityType::BUMPER, objectData);
 	else if (strcmp(name.GetString(), "pala") == 0)
-		type = EntityType::PALA;
+		entity = CreateEntity(EntityType::PALA, objectData);
+	else if (strcmp(name.GetString(), "defeat") == 0)
+		entity = CreateEntity(EntityType::LOSE_CONDITION, objectData);
 
-	return CreateEntity(type);
+	return entity;
 }
 
 // Removes the entity from the list and destroys it. Make sure not to have any pointers to it after running this
@@ -156,6 +163,12 @@ void EntityManager::AddEntity(Entity* entity)
 
 bool EntityManager::Update(float dt)
 {
+	//NOTE Temporary solution for crashing on reload: not unloading modules and disabling game controls
+	if (app->intro->active || app->lose->active)
+		return true;
+
+
+
 	bool ret = true;
 	ListItem<Entity*>* item;
 	Entity* pEntity = NULL;

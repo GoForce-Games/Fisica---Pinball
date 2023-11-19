@@ -18,6 +18,7 @@ enum class EntityType
 	ITEM,
 	PALA,
 	BUMPER,
+	LOSE_CONDITION,
 	UNKNOWN
 };
 
@@ -94,7 +95,10 @@ public:
 	SString name;
 	EntityType type;
 	bool active = true;
-	pugi::xml_node parameters; 
+	// To build from entity presets
+	pugi::xml_node parameters;
+	// To build from tmx file parameters
+	pugi::xml_node dataFromMap;
 
 	// Possible properties, it depends on how generic we
 	// want our Entity class, maybe it's not renderable...

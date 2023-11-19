@@ -24,19 +24,19 @@ bool Reload::Awake(pugi::xml_node& conf)
 	//moduleList.Add((Module*)app->entityManager);
 	ReloadPreset* presetMap = new ReloadPreset("map", 2, 2); // Para escena de inicio y asegura que los módulos necesarios están activos
 	presetMap->AddUnload((Module*)app->intro);
-	presetMap->AddLoad((Module*)app->physics);
-	presetMap->AddLoad((Module*)app->map);
-	presetMap->AddLoad((Module*)app->entityManager);
-	presetMap->AddLoad((Module*)app->scene);
-	presetMap->AddLoad((Module*)app->puntuation);
+	//presetMap->AddLoad((Module*)app->physics);
+	//presetMap->AddLoad((Module*)app->map);
+	//presetMap->AddLoad((Module*)app->entityManager);
+	//presetMap->AddLoad((Module*)app->scene);
+	//presetMap->AddLoad((Module*)app->puntuation);
 
 	presetList.Add(presetMap);
 	
 	ReloadPreset* gameOver = new ReloadPreset("gameToGameOver", 2, 2); // Para los módulos de juego (menos puntuacion) y muestra escena de Game Over
-	gameOver->AddUnload((Module*)app->physics);
-	gameOver->AddUnload((Module*)app->map);
-	gameOver->AddUnload((Module*)app->entityManager);
-	gameOver->AddUnload((Module*)app->scene);
+	//gameOver->AddUnload((Module*)app->physics);
+	//gameOver->AddUnload((Module*)app->map);
+	//gameOver->AddUnload((Module*)app->entityManager);
+	//gameOver->AddUnload((Module*)app->scene);
 	gameOver->AddLoad((Module*)app->lose);
 
 	presetList.Add(gameOver);
@@ -45,6 +45,7 @@ bool Reload::Awake(pugi::xml_node& conf)
 	presetLose->AddUnload((Module*)app->lose);
 	presetLose->AddLoad((Module*)app->intro);
 
+	presetList.Add(presetLose);
 
 	return true;
 }
@@ -152,7 +153,7 @@ void Reload::ReloadModules()
 	// Algunos modulos requieren recargar la configuración al reiniciarse
 	for (ListItem<Module*>* item = activePreset->load.start; item != nullptr; item = item->next)
 	{
-		if (item->data != nullptr && !item->data->awoken) {
+		if (item->data != nullptr && item->data->needsAwaking && !item->data->awoken) {
 			pugi::xml_node config = app->GetConfig(*(item->data));
 			item->data->Awake(config);
 		}

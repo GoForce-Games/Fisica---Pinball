@@ -82,6 +82,9 @@
     <ClCompile Include="Source\LoseScreen.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Source\DeathCollision.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -194,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="Source\LoseScreen.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeathCollision.h">
+      <Filter>Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

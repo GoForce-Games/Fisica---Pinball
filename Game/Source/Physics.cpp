@@ -382,6 +382,15 @@ bool Physics::CleanUp()
 {
 	LOG("Destroying physics world");
 
+	for (b2Body* b = world->GetBodyList(); b; b = b->GetNext()) {
+		PhysBody* pb = (PhysBody*)b->GetUserData();
+		if (pb != nullptr && pb->boundEntity != nullptr) {
+			pb->boundEntity->setToDestroy = true;
+			pb->boundEntity->pbody = nullptr;
+		}
+		delete pb;
+	}
+
 	// Delete the whole physics world!
 	delete world;
 
