@@ -34,7 +34,7 @@ bool LoseScreen::Update(float dt)
 {
 	app->render->DrawTexture(LoseTexture, 0, 0, NULL);
 
-	if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		app->reloader->StartReload("backToStart");
 	}

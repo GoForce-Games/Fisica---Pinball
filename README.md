@@ -9,7 +9,7 @@ An SDL and Box2D pinball game.
  - {F1} - Activate Debug Mode and allow user to move the ball with mouse left button.
  - {LEFT AND RIGHT ARROWS} - Flipper movement
  - {DOWN ARROW} - Kicker
- - {SPACE} - Launch the ball 
+ - {SPACE} - Launch the ball / Continue between scenes
 
 ## Developers
 
