@@ -90,10 +90,10 @@ bool Pala::Update(float dt) {
 	angle1 = joint1->GetJointAngle() * RADTODEG-17.0f;
 	angle2 = joint2->GetJointAngle() * RADTODEG+17.0f;
 
-	/*if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
 	{
 		app->audio->PlayFx(palaFx);
-	}*/
+	}
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{

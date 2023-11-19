@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="11" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="57">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="11" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="58">
  <tileset firstgid="1" name="mapaPinball" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="220" columns="11">
   <image source="../Textures/mapaPinball.png" width="380" height="664"/>
+ </tileset>
+ <tileset firstgid="221" name="MapMetadata" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="2" columns="2">
+  <image source="MapMetadata.png" width="67" height="34"/>
  </tileset>
  <layer id="1" name="Mapa" width="11" height="20">
   <properties>
@@ -245,7 +248,7 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup id="3" name="Paredes">
+ <objectgroup id="3" name="Paredes" opacity="0.9">
   <properties>
    <property name="bool Collider" type="bool" value="true"/>
   </properties>
@@ -270,9 +273,6 @@
   <object id="32" x="41.3333" y="166.667">
    <polygon points="0,0 -0.333333,-88.6667 8.66667,-97.6667 271.667,-98.3333 281.667,-88.3333 282,-0.333333 272,-22 263,-34.3333 238.667,-52.3333 215.333,-64.6667 190,-73 155.667,-78 124,-78.3333 99.3333,-75 72,-67.6667 49.3333,-57.3333 25.3333,-40.6667 11.6667,-24 4.33333,-11.3333"/>
   </object>
-  <object id="33" x="38.25" y="538.5">
-   <polygon points="0,0 -0.25,40.75 6.5,46.75 264.75,46.5 264.75,5 145.75,36.5 123.75,37"/>
-  </object>
   <object id="34" x="4.09091" y="4.95455" width="84.4091" height="27.0455"/>
   <object id="36" x="3.875" y="33" width="38.25" height="606.5"/>
   <object id="39" x="271.96" y="5" width="80.2273" height="27.7728"/>
@@ -282,7 +282,15 @@
   <object id="52" x="0" y="-0.666667" width="351.333" height="4.66667"/>
   <object id="55" x="222" y="408.5" width="0.5"/>
   <object id="57" x="146.956" y="348">
-   <polygon points="0,0 45.0405,0 45.0444,0.994444 47.0278,1 47.0444,1.98889 49.0389,2 49.05,2.98333 50.0333,3 50.0389,3.99444 52.0389,4 52.0444,4.96667 53.0389,4.99444 53.05,7 54.0389,6.99444 63.0288,23.9922 63.0444,34.9922 60.0679,38.0313 54.0523,38 54.0132,37.0156 50.021,37.0234 49.9976,36.0234 29.0444,36.0313 29.0132,35.1563 4.01319,35.0313 4.01319,35.8438 -5.67431,36.0313 -17.9243,36.0313 -17.9556,35.0938 -18.9556,35 -18.9556,26.9688 -18.0181,27 -17.9868,24.9688 -16.9556,25 -16.9868,23.0625 -16.0493,23.0313 -15.9556,19.9688 -14.8931,20 -15.0181,17.875 -10.0806,5.96875 -9.04931,5.875 -8.95556,3.96875 -6.08056,3.90625 -6.14306,3.15625 -2.92431,0.9375"/>
+   <polygon points="0,0 45.0405,0 46.2618,0.516183 47.0278,1 48.1748,1.51063 49.0389,2 49.7022,2.41811 50.0333,3 51.1259,3.60314 52.0389,4 52.7401,4.48841 53.0389,4.99444 53.7457,6.04348 54.0389,6.99444 63.0288,23.9922 63.0444,34.9922 60.0679,38.0313 54.0523,38 53.1002,37.5808 50.021,37.0234 50.0846,36.0669 29.0444,36.0313 29.0132,35.1563 4.01319,35.0313 4.01319,35.8438 -5.67431,36.0313 -17.9243,36.0313 -17.9556,35.0938 -18.9556,35 -18.9556,26.9688 -18.0181,27 -17.9868,24.9688 -16.9556,25 -16.9868,23.0625 -16.0493,23.0313 -15.9556,19.9688 -14.8931,20 -15.0181,17.875 -10.0806,5.96875 -9.04931,5.875 -8.95556,3.96875 -7.61181,3.5 -6.14306,3.15625 -2.92431,0.9375"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="Muerte">
+  <properties>
+   <property name="bool Muerte" type="bool" value="true"/>
+  </properties>
+  <object id="57" x="37.3333" y="536">
+   <polygon points="0,0 -0.25,40.75 6.5,46.75 264.75,46.5 264.75,5 153.805,38.1007 121.758,37.9289"/>
   </object>
  </objectgroup>
 </map>
