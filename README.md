@@ -6,14 +6,10 @@ An SDL and Box2D pinball game.
 
 ## Key Features
 
- - {Feature01}
- - {Feature02}
- - {Feature03}
- - {Feature04}
- 
-## Controls
-
- - {ControlsScheme}
+ - {F1} - Activate Debug Mode and allow user to move the ball with mouse left button.
+ - {LEFT AND RIGHT ARROWS} - Flipper movement
+ - {DOWN ARROW} - Kicker
+ - {SPACE} - Launch the ball 
 
 ## Developers
 
@@ -25,5 +21,3 @@ An SDL and Box2D pinball game.
 ## License
 
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
-
-{AdditionalLicenses}
